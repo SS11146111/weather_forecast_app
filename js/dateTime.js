@@ -1,4 +1,4 @@
-/*setInterval(()=>{
+setInterval(()=>{
 
     fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
     .then(res => res.json())
@@ -125,7 +125,3 @@ function showPosition(position)
 
 }
 
-
-
-
-*/
