@@ -39,6 +39,16 @@
         <h4 class="text-center text-red-700 font-semibold text-base">OR</h4>
         <button class="w-72 bg-slate-400 m-2 ml-4 rounded-md text-center py-2 hover:bg-slate-300 shadow-lg shadow-gray-800/50 font-bold" onclick="getLocation()">Use current location</button>
         
+        <div class = "bg-blue-400 m-4 ml-4 mr-4 rounded-md shadow-md shadow-blue-800/50">
+            <label for="forecastType" class="m-2 text-white font-bold">Select Forecast Type</label>
+            <select name="forecastType" id="forecastType" class="m-2 rounded-md p-1 w-60">
+                <option value="current">Current Weather</option>
+                <option value="hourly">Hourly Forecast (Next 48 hrs)</option>
+                <option value="daily">Daily Forecast (Next 4 days)</option>
+            </select>
+            <button id="forecastSelect"><img src='/images/arrow.png' width=20 height=20 alt='enter'/></button>
+        </div>
+        
         <div class="w-72 h-60 bg-white rounded-md m-4 shadow-lg shadow-gray-800/50 hidden" id="report">
             <table>
                 <tr>
