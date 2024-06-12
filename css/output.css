@@ -614,6 +614,14 @@ video {
   margin-top: 2rem;
 }
 
+.ml-8 {
+  margin-left: 2rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .flex {
   display: flex;
 }
@@ -648,6 +656,10 @@ video {
 
 .flex-row {
   flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
@@ -747,9 +759,9 @@ video {
   line-height: 2.5rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .font-bold {
