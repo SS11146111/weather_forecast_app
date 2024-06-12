@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    
+    overflow: hidden ;
+}
+
+h1{
+    -webkit-text-stroke: 1px rgb(0, 4, 255);
+}
