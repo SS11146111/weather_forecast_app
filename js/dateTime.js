@@ -1,4 +1,4 @@
-/*setInterval(()=>{
+setInterval(()=>{
 
     fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
     .then(res => res.json())
@@ -22,8 +22,9 @@
 
 
 function getCurrentWeatherReport()
-{   const city = document.getElementById("cityName").value;
-    
+{   
+    const city = document.getElementById("cityName").value;
+
     fetch("http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638")
     .then(res => res.json())
     .then(json => {
@@ -46,7 +47,7 @@ function getCurrentWeatherReport()
 
                     let humidity = json.main.humidity;
                     document.getElementById("humidity").innerHTML = humidity;
-                 
+                    
                     let visibility = json.visibility;
                     document.getElementById("visibility").innerHTML = visibility;
 
@@ -57,14 +58,18 @@ function getCurrentWeatherReport()
                         let remainingLetters = desc.substring(1);
                         desc = firstLetter + remainingLetters;
                     }
-                   
+                    
                     document.getElementById("weatherCnd").src="https://openweathermap.org/img/wn/" + src +"@2x.png";
                     document.getElementById("weatherDesc").innerHTML = desc;
                     console.log(json)
+                    console.log("kya hua")
                 
                 })
 
     })
+    
+    
+   
 }
 
 document.getElementById("enter").addEventListener("click",
@@ -119,7 +124,7 @@ function showPosition(position)
             
             document.getElementById("weatherCnd").src="https://openweathermap.org/img/wn/" + src +"@2x.png";
             document.getElementById("weatherDesc").innerHTML = desc;
-            console.log(json)
+            console.log(json)   
 
     })
 
@@ -127,5 +132,3 @@ function showPosition(position)
 
 
 
-
-*/
