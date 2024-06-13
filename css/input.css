@@ -32,3 +32,26 @@ h1{
     background-color: white;
     opacity: 0.5;
 }
+
+#forecastReport{
+    overflow-x: auto;
+}
+
+.style{
+    width: 288px;
+    height: 360px;
+    background-color: rgb(96 165 250);
+    border-radius: 5px;
+    margin: 16px;
+    flex-shrink: 0;
+}
+
+.forecastImg{
+
+    margin-left: 110px;
+}
+
+#not_found{
+    height: 320px;
+    margin-left: 300px;
+}
