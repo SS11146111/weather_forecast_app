@@ -16,3 +16,19 @@ body{
 h1{
     -webkit-text-stroke: 1px rgb(0, 4, 255);
 }
+
+#container{
+    width: 100vw;
+    height: 93.5vh;
+    position: relative;
+}
+
+#screen{
+    width: 100vw;
+    height: 93.5vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    opacity: 0.5;
+}
