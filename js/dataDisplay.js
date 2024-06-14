@@ -26,11 +26,14 @@ function displayData(){
     const storedKeys = [];
     const storedAirKeys = [];
     const storedAirValues = [];
+    const storedLocKeys = [];
+    const storedLocValues = [];
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const city = urlParams.get('city');
     fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=yes")
+    //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=yes")
     .then(res => res.json())
     .then(json => {
         storedValues.push(json.current.uv,json.current.cloud,json.current.dewpoint_c,json.current.feelslike_c,json.current.heatindex_c,json.current.precip_in,json.current.pressure_in,json.current.wind_mph,json.current.wind_dir,json.current.wind_degree,json.current.gust_kph);
@@ -79,9 +82,30 @@ function displayData(){
             col2.classList.add("sides");
         }
 
+        console.log(json)
+        storedLocKeys.push("Country","Latitude","Longitude","Local time","Local time epoch","City","Region","Time Zone");
+        storedLocValues.push(json.location.country,json.location.lat,json.location.lon,json.location.localtime,json.location.localtime_epoch,json.location.name,json.location.region,json.location.tz_id)
+       
+        let table4 = document.getElementById("table4");
+        for(let i=0; i<storedLocKeys.length; i++)
+        {
+            let row = document.createElement("tr");
+            let col1 = document.createElement("td");
+            let col2 = document.createElement("td");
+            col1.innerHTML = storedLocKeys[i];
+            col1.style.padding = "2px";
+            col2.innerHTML = storedLocValues[i];
+            col2.style.padding = "2px";
+            row.appendChild(col1);
+            row.appendChild(col2);
+            row.style.padding = "2px";
+            table4.appendChild(row);
+            table4.style.margin = "6px";
+            row.classList.add("sides");
+            col1.classList.add("sides");
+            col2.classList.add("sides");
+        }
     })
-    
-    
 
 }
 

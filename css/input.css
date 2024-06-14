@@ -47,10 +47,6 @@ h1{
     flex-shrink: 0;
 }
 
-.forecastImg{
-
-    margin-left: 110px;
-}
 
 #not_found{
     height: 320px;
@@ -71,4 +67,14 @@ h1{
     width: 1000px;
     height: 400px;
     object-fit: fill;
+}
+
+#div3Img{
+    height: 480px;
+    width: 310px;
+    margin: 4px;
+}
+
+#paraCnd{
+    overflow-wrap: break-word;
 }

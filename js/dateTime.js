@@ -36,7 +36,7 @@ document.getElementById("enter").addEventListener("click",
 function getCurrentWeatherReport(city)
 {   
     fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no")
-    //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Shillong&aqi=no")
+    //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no")
     .then(res => res.json())
     .then(json => {
        
@@ -67,10 +67,11 @@ function getCurrentWeatherReport(city)
         
         document.getElementById("weatherCnd").src="http:"+src;
         document.getElementById("weatherDesc").innerHTML = desc;
-
         document.getElementById("more_data1").addEventListener("click", 
             function(){
                 location.href = `/html/moreData.html?city=`+city;
+                //location.href = `/html/moreData.html?city=Guwahati`;
+
             }
         )
     
@@ -111,7 +112,7 @@ function getForecast(city){
             parent.appendChild(div);
         }
     fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
-    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Shillong&days="+days+"&aqi=no&alerts=no")
+    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
         .then(res => res.json())
         .then(json => 
             {
@@ -125,10 +126,10 @@ function getForecast(city){
                     let max_wind = "<tr><td class='text-blue-800 font-bold p-2 '>Max Wind (m/h):</td><td>"+record.day.maxwind_mph+"</td></tr>";
                     let avg_vis = "<tr><td class='text-blue-800 font-bold p-2 bg-slate-200'>Avg Visibility (km):</td><td class='bg-slate-200'>"+record.day.avgvis_km+"</td></tr>";
                     let avg_humi = "<tr><td class='text-blue-800 font-bold p-2 '>Avg Humidity (%):</td><td>"+record.day.avghumidity+"</td></tr>";
-                    let desc = "<p class='text-center text-white font-bold forecastCnd'>"+record.day.condition.text+"</p>";
+                    let desc = "<p class='text-center text-white font-bold forecastCnd m-2'>"+record.day.condition.text+"</p>";
                     let imgSrc =`<img src="http:`+record.day.condition.icon+`" width="60" height="40" class="forecastImg"/>`;
 
-                    document.getElementsByClassName("style")[i].innerHTML = "<div class='bg-white mt-4 ml-4 mr-4 mb-1 rounded-md'><table>"+day+max_temp+min_temp+max_wind+avg_vis+avg_humi+"</table></div><div class='bg-blue-800 rounded-md m-1 ml-4 mr-4' >"+imgSrc+desc+"</div>";
+                    document.getElementsByClassName("style")[i].innerHTML = "<div class='bg-white mt-4 ml-4 mr-4 mb-1 rounded-md'><table>"+day+max_temp+min_temp+max_wind+avg_vis+avg_humi+"</table></div><div class='bg-blue-800 rounded-md m-1 ml-4 mr-4 mb-2 flex w-64 p-1' id='paraCnd'>"+imgSrc+desc+"</div>";
 
 
                 }
