@@ -923,6 +923,17 @@ h1{
   width: 20%;
 }
 
+#div1{
+  background-size: contain;
+}
+
+#introImg{
+  width: 1000px;
+  height: 400px;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
 .hover\:bg-slate-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));

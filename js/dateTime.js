@@ -1,3 +1,5 @@
+window.onload()
+
 //display current date and time
 setInterval(()=>{
 
@@ -198,6 +200,9 @@ document.getElementById("gfl").addEventListener("click",
     }
 )
 
+function introfun(){
+    document.getElementById("forecastReport").innerHTML = "<img src='/images/intro.gif' id='introImg'/>";
+}
 
 
 

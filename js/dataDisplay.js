@@ -33,8 +33,8 @@ function displayData(){
     fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=yes")
     .then(res => res.json())
     .then(json => {
-        storedValues.push(json.current.uv,json.current.cloud,json.current.dewpoint_c,json.current.feelslike_c,json.current.heatindex_c,json.current.precip_in,json.current.precip_mm,json.current.pressure_in,json.current.pressure_mb,json.current.wind_mph,json.current.wind_dir,json.current.wind_degree,json.current.gust_kph);
-        storedKeys.push("UV index","Cloud","Dew point (c)","Temperature feels like (c)","Heat index(c)","Precipitation amount(in)","Precipitation amount(mm)","Pressure(in)","Pressure(mb)","Wind(m/h)","Wind direction","wind degree","Wind gust(k/h)");
+        storedValues.push(json.current.uv,json.current.cloud,json.current.dewpoint_c,json.current.feelslike_c,json.current.heatindex_c,json.current.precip_in,json.current.pressure_in,json.current.wind_mph,json.current.wind_dir,json.current.wind_degree,json.current.gust_kph);
+        storedKeys.push("UV index","Cloud","Dew point (c)","Temperature feels like (c)","Heat index(c)","Precipitation amount(in)","Pressure(in)","Wind(m/h)","Wind direction","wind degree","Wind gust(k/h)");
        
         let table1 = document.getElementById("table1");
         for(let i=0; i<storedKeys.length; i++)

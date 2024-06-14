@@ -62,3 +62,13 @@ h1{
     border-collapse: collapse;
     width: 20%;
 }
+
+#div1{
+    background-size: contain;
+}
+
+#introImg{
+    width: 1000px;
+    height: 400px;
+    object-fit: fill;
+}
