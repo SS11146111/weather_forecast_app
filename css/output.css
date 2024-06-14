@@ -917,6 +917,12 @@ h1{
   margin-left: 300px;
 }
 
+.sides{
+  border: 2px solid rgb(255, 255, 255);
+  border-collapse: collapse;
+  width: 20%;
+}
+
 .hover\:bg-slate-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));

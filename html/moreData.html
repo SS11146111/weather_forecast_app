@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Weather Forecast Application">
+        <meta name="keywords" content="HTML, Tailwind CSS, JavaScript, Weather Forecast Application ">
+        <meta name="author" content="Sangita Saha">
+    
+        
+        <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+        <script src="/js/dataDisplay.js" defer></script>
+        <link rel="stylesheet" href="/css/output.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <title>Weather Report</title>
+    </head>
+    <body class="bg-fixed bg-no-repeat bg-cover" style="background-image: url(/images/background.png)">
+        <nav class="bg-blue-600 text-center p-4 z-40 flex flex-row justify-between">
+            <img src="/images/icon.png" width=80 height=5 alt="forecast-icon">
+            
+            <h1 class="text-white font-bold text-4xl p-4">Weather Forecast</h1>
+                
+            <div class="flex flex-row">
+                <img src='/images/schedule.png' width=40 height=20 alt='calendar' class="self-center"/>
+                <h1 class="text-yellow-300 font-bold text-2xl p-2" id="displayDate"></h1>
+            </div>        
+        </nav>
+
+        <div class="flex justify-between h-h-custom m-4 bg-white rounded-lg shadow-2xl shadow-blue-900 ">
+            <div class = "w-80 h-80 m-4 bg-blue-200 rounded-lg" id="div1">
+                <h3 class="text-center p-2 bg-blue-400 rounded-lg font-bold">Forecast</h3>
+                <table class="ml-6" id="table1"></table>
+            </div>
+            <div class = "w-80 h-80 m-4 bg-blue-200 rounded-lg" id="div2">
+                <h3 class="text-center p-2 bg-blue-400 rounded-lg font-bold">Air Quality</h3>
+                <table class="ml-6" id="table2"></table>
+            </div>
+            <div class = "w-80 h-80 m-4 bg-blue-200 rounded-lg" id="div3"></div>
+            <div class = "w-80 h-80 m-4 bg-blue-200 rounded-lg" id="div4"></div>
+        </div>
+</body>
+</html>

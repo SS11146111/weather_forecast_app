@@ -38,6 +38,7 @@ function getCurrentWeatherReport(city)
     .then(res => res.json())
     .then(json => {
        
+        console.log(json)
         document.getElementById("report").style.display = "block";
 
         document.getElementById("myCity").innerHTML = city.toUpperCase();
@@ -64,6 +65,12 @@ function getCurrentWeatherReport(city)
         
         document.getElementById("weatherCnd").src="http:"+src;
         document.getElementById("weatherDesc").innerHTML = desc;
+
+        document.getElementById("more_data1").addEventListener("click", 
+            function(){
+                location.href = `/html/moreData.html?city=`+city;
+            }
+        )
     
     })
     .catch(() =>  {
@@ -190,6 +197,7 @@ document.getElementById("gfl").addEventListener("click",
             })
     }
 )
+
 
 
 
