@@ -129,7 +129,7 @@ function getForecast(city){
                     let desc = "<p class='text-center text-white font-bold forecastCnd m-2'>"+record.day.condition.text+"</p>";
                     let imgSrc =`<img src="http:`+record.day.condition.icon+`" width="60" height="40" class="forecastImg"/>`;
 
-                    document.getElementsByClassName("style")[i].innerHTML = "<div class='bg-white mt-4 ml-4 mr-4 mb-1 rounded-md'><table>"+day+max_temp+min_temp+max_wind+avg_vis+avg_humi+"</table></div><div class='bg-blue-800 rounded-md m-1 ml-4 mr-4 mb-2 flex w-64 p-1' id='paraCnd'>"+imgSrc+desc+"</div>";
+                    document.getElementsByClassName("style")[i].innerHTML = "<div class='bg-white mt-4 ml-4 mr-4 rounded-md'><table>"+day+max_temp+min_temp+max_wind+avg_vis+avg_humi+"</table></div><div class='bg-blue-800 rounded-md m-1 ml-4 mr-4 flex w-64' id='paraCnd'>"+imgSrc+desc+"</div>";
 
 
                 }
