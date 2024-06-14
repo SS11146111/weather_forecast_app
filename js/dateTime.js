@@ -69,8 +69,8 @@ function getCurrentWeatherReport(city)
         document.getElementById("weatherDesc").innerHTML = desc;
         document.getElementById("more_data1").addEventListener("click", 
             function(){
-                location.href = `/html/moreData.html?city=`+city;
-                //location.href = `/html/moreData.html?city=Guwahati`;
+                location.href = `/html/moreData.html?city=`+city+`&type=current`;
+                //location.href = `/html/moreData.html?city=Guwahati&type=current`;
 
             }
         )
@@ -103,6 +103,8 @@ document.getElementById("cityForecast").addEventListener("change",
 
 function getForecast(city){
     document.getElementById("forecastReport").innerHTML = "";
+    document.getElementById("more_data2").style.display = "block";
+
     const days = document.getElementById("days").value;
     for(let i=1; i<=days; i++)
         {
@@ -111,8 +113,8 @@ function getForecast(city){
             const parent = document.getElementById("forecastReport");
             parent.appendChild(div);
         }
-    fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
-    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
+    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
+    fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
         .then(res => res.json())
         .then(json => 
             {
@@ -131,8 +133,14 @@ function getForecast(city){
 
                     document.getElementsByClassName("style")[i].innerHTML = "<div class='bg-white mt-4 ml-4 mr-4 rounded-md'><table>"+day+max_temp+min_temp+max_wind+avg_vis+avg_humi+"</table></div><div class='bg-blue-800 rounded-md m-1 ml-4 mr-4 flex w-64' id='paraCnd'>"+imgSrc+desc+"</div>";
 
-
                 }
+
+                document.getElementById("more_data2").addEventListener("click",
+                    function(){
+                        //location.href=`/html/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;
+                        location.href=`/html/moreData.html?city=Guwahati&days=`+days+`&type=forecast`;
+                    }
+                )
             }
         )
         .catch(() =>  {
@@ -206,5 +214,7 @@ function introfun(){
 }
 
 
-
+function moreDataForecast(){
+    location.href()
+}
 
