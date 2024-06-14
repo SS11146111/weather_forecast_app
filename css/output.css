@@ -600,8 +600,8 @@ video {
   left: 24rem;
 }
 
-.top-40 {
-  top: 10rem;
+.top-32 {
+  top: 8rem;
 }
 
 .z-40 {
@@ -927,11 +927,25 @@ h1{
   background-size: contain;
 }
 
+#div3{
+  background-size: cover;
+  background-position: center;
+}
+
+#div2{
+  background-size: cover;
+  background-position: center;
+}
+
 #introImg{
   width: 1000px;
   height: 380px;
   -o-object-fit: fill;
      object-fit: fill;
+}
+
+#more_data2{
+  margin-left: 90%;
 }
 
 #div3Img{
@@ -948,3 +962,9 @@ h1{
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
+
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
