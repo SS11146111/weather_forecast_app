@@ -23,6 +23,7 @@ h1{
     position: relative;
 }
 
+
 #screen{
     width: 100vw;
     height: 93.5vh;
@@ -54,4 +55,10 @@ h1{
 #not_found{
     height: 320px;
     margin-left: 300px;
+}
+
+.sides{
+    border: 2px solid rgb(255, 255, 255);
+    border-collapse: collapse;
+    width: 20%;
 }
