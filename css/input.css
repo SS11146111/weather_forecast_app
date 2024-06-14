@@ -9,9 +9,9 @@
 }
 
 body{
-    
-    overflow: hidden ;
+    overflow: hidden;
 }
+
 
 h1{
     -webkit-text-stroke: 1px rgb(0, 4, 255);
@@ -40,7 +40,7 @@ h1{
 
 .style{
     width: 288px;
-    height: 360px;
+    height: 354px;
     background-color: rgb(96 165 250);
     border-radius: 5px;
     margin: 16px;
@@ -65,7 +65,7 @@ h1{
 
 #introImg{
     width: 1000px;
-    height: 400px;
+    height: 380px;
     object-fit: fill;
 }
 

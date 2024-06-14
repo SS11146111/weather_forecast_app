@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     height: {
-      'h-custom':'560px',
+      'h-custom':'540px',
     },
   },
   plugins: [],
