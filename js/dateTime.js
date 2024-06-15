@@ -148,8 +148,8 @@ function getForecast(city){
             const parent = document.getElementById("forecastReport");
             parent.appendChild(div);
         }
-    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
-    fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
+    fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
+    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
         .then(res => res.json())
         .then(json => 
             {
@@ -172,8 +172,8 @@ function getForecast(city){
 
                 document.getElementById("more_data2").addEventListener("click",
                     function(){
-                        //location.href=`/html/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;
-                        location.href=`/html/moreData.html?city=Guwahati&days=`+days+`&type=forecast`;
+                        location.href=`/html/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;
+                        //location.href=`/html/moreData.html?city=Guwahati&days=`+days+`&type=forecast`;
                     }
                 )
             }

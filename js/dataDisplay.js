@@ -131,8 +131,8 @@ function displayData(){
     else if(type === "forecast")
         {
 
-            //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=yes&alerts=yes")
-            fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=yes&alerts=yes")
+            fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=yes&alerts=yes")
+            //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=yes&alerts=yes")
             .then(res => res.json())
             .then(json => {
 
@@ -211,29 +211,38 @@ function displayData(){
                         col2.classList.add("sides");
                     }
 
-                    storedAlertKeysf.push("Country","Latitude","Longitude","Local time","Local time epoch","City","Region","Time Zone");
-                    storedAlertValuesf.push(json.location.country,json.location.lat,json.location.lon,json.location.localtime,json.location.localtime_epoch,json.location.name,json.location.region,json.location.tz_id)
-                        console.log(json.alerts)
-                    let table3 = document.getElementById("table3");
-                    for(let i=0; i<storedLocKeys.length; i++)
+                    if(json.alerts.alert.length != 0)
                     {
-                        let row = document.createElement("tr");
-                        let col1 = document.createElement("td");
-                        let col2 = document.createElement("td");
-                        col1.innerHTML = storedLocKeys[i];
-                        col1.style.padding = "2px";
-                        col1.style.fontSize = "small"
-                        col2.innerHTML = storedLocValues[i];
-                        col2.style.padding = "2px";
-                        col2.style.fontSize = "small"
-                        row.appendChild(col1);
-                        row.appendChild(col2);
-                        row.style.padding = "2px";
-                        table4.appendChild(row);
-                        table4.style.margin = "6px";
-                        row.classList.add("sides");
-                        col1.classList.add("sides");
-                        col2.classList.add("sides");
+
+                        document.getElementById("div3").style.backgroundImage = "url('/images/alert.gif')"
+                        storedAlertKeysf.push("Headline","Message Type","Severity","Urgency","Areas","Category","Certainty","Event","Effective","Expires","Instruction");
+                        storedAlertValuesf.push(json.alerts.alert.headline,json.alerts.alert.msgType,json.alerts.alert.severity,json.alerts.alert.urgency,json.alerts.alert.areas,json.alerts.alert.category,json.alerts.alert.certainty,json.alerts.alert.event,json.alerts.alert.effective,json.alerts.alert.expires,json.alerts.alert.instruction)
+            
+                        let table3 = document.getElementById("table3");
+                        for(let i=0; i<storedAlertKeysf.length; i++)
+                        {
+                            let row = document.createElement("tr");
+                            let col1 = document.createElement("td");
+                            let col2 = document.createElement("td");
+                            col1.innerHTML = storedAlertKeysf[i];
+                            col1.style.padding = "2px";
+                            col1.style.fontSize = "small"
+                            col2.innerHTML = storedAlertValuesf[i];
+                            col2.style.padding = "2px";
+                            col2.style.fontSize = "small"
+                            row.appendChild(col1);
+                            row.appendChild(col2);
+                            row.style.padding = "2px";
+                            table3.appendChild(row);
+                            table3.style.margin = "6px";
+                            row.classList.add("sides");
+                            col1.classList.add("sides");
+                            col2.classList.add("sides");
+                        }
+                    }
+                    else if(json.alerts.alert.length == 0){
+                        document.getElementById("div3").style.backgroundImage = "url('/images/no_notification.gif')";
+                        document.getElementById("table3").style.display = "none";
                     }
 
             })

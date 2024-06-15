@@ -909,6 +909,8 @@ h1{
 
 #forecastReport{
   overflow-x: auto;
+  width: 980px;
+  margin-left: 20px;
 }
 
 .style{
@@ -946,14 +948,15 @@ h1{
 }
 
 #introImg{
-  width: 1000px;
+  width: 980px;
   height: 380px;
   -o-object-fit: fill;
      object-fit: fill;
 }
 
 #more_data2{
-  margin-left: 90%;
+  margin-left: 900px;
+  font-size: small;
 }
 
 #div3Img{
@@ -1017,7 +1020,7 @@ h1{
 #caret2{
   position: relative;
   left: 386px;
-  top: -48px;
+  top: -44px;
   z-index: 80;
 }
 
@@ -1096,6 +1099,14 @@ h1{
   width: 220px;
   text-align: left;
   border-radius: 6px;
+}
+
+#table1, #table2, #table3, #table4{
+  height: 300px;
+}
+
+#div1,#div2,#div3,#div4{
+  border: 2px solid lightblue;
 }
 
 .hover\:bg-blue-200:hover {

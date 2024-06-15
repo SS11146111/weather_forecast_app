@@ -29,7 +29,7 @@
     <div id="container">
         <div id="screen"></div>
     </div>
-   
+ 
     <div class = "w-80 h-h-custom absolute top-32 left-10 bg-blue-200 shadow-2xl shadow-blue-900 rounded-lg" id="container1">
         <div class = "bg-blue-600 m-4 ml-4 mr-4 rounded-md shadow-md shadow-blue-800/50">
            <p class="m-2 text-white font-bold text-center p-2">Current Weather Report</p>
@@ -85,17 +85,17 @@
             <p class="m-2 text-white font-bold text-center p-2">Weather Forecast By Days</p>
          </div>
         <div class="flex flex-row">
-            <div class = "bg-blue-400 m-2 ml-4 mr-4  rounded-md shadow-md shadow-blue-800/50">
+            <div class = "bg-blue-400 m-1 ml-4 mr-4  rounded-md shadow-md shadow-blue-800/50">
                 <label for="cityForecast" class="m-2 text-white font-bold">Enter City Name:</label>
                 <input type="text" id="cityForecast" name="cityForecast" class="m-2 rounded-md p-1 w-60" placeholder="e.g., Shillong, Guwahati">
             </div>
             <p class="text-center text-red-700 font-semibold text-sm self-center">OR</p>
-            <button class="w-72 bg-slate-400 m-2 ml-4 mr-4 rounded-md text-center py-2 hover:bg-slate-300 shadow-lg shadow-gray-800/50 font-bold" id="gfl">Use current location</button>
-            <div class="flex flex-row bg-blue-400 m-2 ml-4 mr-4  rounded-md shadow-md shadow-blue-800/50">
-                <label for="days" class="m-2 text-white font-bold">Days:</label>
-                <input type="number" id="days" name="days" class="m-2 rounded-md p-1 w-14">
+            <button class="w-72 bg-slate-400 m-1 ml-4 mr-4 rounded-md text-center py-2 hover:bg-slate-300 shadow-lg shadow-gray-800/50 font-bold" id="gfl">Use current location</button>
+            <div class="flex flex-row bg-blue-400 m-1 ml-4 mr-4  rounded-md shadow-md shadow-blue-800/50">
+                <label for="days" class="m-1 text-white font-bold">Days:</label>
+                <input type="number" id="days" name="days" class="m-1 rounded-md p-1 w-14">
             </div>
-            <button id="enterForecast" class="m-2"><img src='/images/arrow.png' width=20 height=20 alt='enter'/></button>
+            <button id="enterForecast" class="m-1"><img src='/images/arrow.png' width=20 height=20 alt='enter'/></button>
         </div>
         <i class="fa fa-caret-down bg-blue-600 rounded-md text-center p-2 relative text-white hover:bg-blue-200 hover:text-blue-600" aria-hidden="true" id="caret2"></i>
         <div id="dropDownContent2" class="hidden rounded-md">
@@ -103,11 +103,9 @@
             <hr>
             <div id="history2" class="flex flex-col"></div>
         </div>
-        <div class="flex bg-white rounded-md m-4" id="forecastReport">
-        </div>
-        <button class="bg-blue-800 rounded-md text-center p-2 hover:bg-slate-300 hover:text-black shadow-lg shadow-gray-800/50 font-bold text-sm text-white hidden" id="more_data2" >more data...</button>
+        <button class="bg-blue-800 rounded-md text-center p-2 hover:bg-slate-300 hover:text-black shadow-lg shadow-gray-800/50 font-bold text-white hidden" id="more_data2" >more data...</button>
+        <div class="flex bg-white rounded-md m-1" id="forecastReport"></div>
     </div> 
-    
     
 </body>
 </html>
