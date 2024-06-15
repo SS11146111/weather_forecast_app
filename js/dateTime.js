@@ -411,6 +411,7 @@ function search(){
                 function(){
                     city = searchHistory[i].innerHTML;
                     document.getElementById("cityName").value = city;
+                    getCurrentWeatherReport(city)
                 }
             )
         }
@@ -426,6 +427,7 @@ function search2(){
                 function(){
                     city = searchHistory[i].innerHTML;
                     document.getElementById("cityForecast").value = city;
+                    getForecast(city)
                 }
             )
         }
