@@ -29,7 +29,26 @@ document.getElementById("enter").addEventListener("click",
     function()
     {
         const city = document.getElementById("cityName").value;
-        getCurrentWeatherReport(city);
+        
+        if(city != "")
+            {
+                getCurrentWeatherReport(city);
+            }
+        else{
+            
+            document.getElementById("container1").style.display = "none";
+            document.getElementById("container2").style.display = "none";
+            document.getElementById("msg1").style.display = "block";
+            document.getElementById("ok").addEventListener("click",
+                function(){
+                    document.getElementById("msg1").style.display = "none";
+                    document.getElementById("container1").style.display = "block";
+                    document.getElementById("container2").style.display = "block";
+                }
+            )
+
+        }
+
     }
 )
 
@@ -104,19 +123,59 @@ function getCurrentWeatherReport(city)
         const img = document.createElement("img");
         img.src = "/images/not_found.png";
         div.appendChild(img);
+        setTimeout(()=>{
+           location.reload()
+        },2000)
 
     })
 }
 
 //get weather forecast by search
-document.getElementById("cityForecast").addEventListener("change",
+ document.getElementById("enterForecast").addEventListener("click",
     function(){
-        document.getElementById("enterForecast").addEventListener("click",
+        const cityForecast = document.getElementById("cityForecast").value;
+        const days = document.getElementById("days").value;
+        if(cityForecast != "" && days != "")
+            {
+               getForecast(cityForecast);
+            }
+        else {
+            
+            document.getElementById("container1").style.display = "none";
+            document.getElementById("container2").style.display = "none";
+            document.getElementById("msg2").style.display = "block";
+            document.getElementById("ok2").addEventListener("click",
             function(){
-                const cityForecast = document.getElementById("cityForecast").value;
-                getForecast(cityForecast);
+                document.getElementById("msg2").style.display = "none";
+                document.getElementById("container1").style.display = "block";
+                document.getElementById("container2").style.display = "block";
+            }
+        )}
+    })
+
+document.getElementById("gfl").addEventListener("click",
+    function(){
+        const days = document.getElementById("days").value;
+        if(days!="")
+            {
+                getForecastByLocation();
+            }     
+        else
+        {
+            document.getElementById("container1").style.display = "none";
+            document.getElementById("container2").style.display = "none";
+            document.getElementById("msg3").style.display = "block";
+            document.getElementById("ok3").addEventListener("click",
+            function(){
+                document.getElementById("msg3").style.display = "none";
+                document.getElementById("container1").style.display = "block";
+                document.getElementById("container2").style.display = "block";
             })
-})
+            
+        }
+    }
+)
+
 
 function getForecast(city){
     let flag = false;
@@ -190,6 +249,10 @@ function getForecast(city){
                 img.src = "/images/not_found_2.png";
                 img.id = "not_found";
                 div.appendChild(img);
+                setTimeout(()=>{
+                    location.reload()
+                 },2000)
+
         })
 }
 
@@ -234,15 +297,6 @@ function showCity2(position)
         .then(res => res.json())
         .then(json => getForecast(json[0].name))
 }
-
-document.getElementById("gfl").addEventListener("click",
-    function(){
-        document.getElementById("enterForecast").addEventListener("click",
-            function(){
-                getForecastByLocation();
-            })
-    }
-)
 
 function introfun(){
     document.getElementById("forecastReport").innerHTML = "<img src='/images/intro.gif' id='introImg'/>";
@@ -378,5 +432,15 @@ function search2(){
 
 }
 
+document.getElementById("history").addEventListener("click",
+    function(){
+        document.getElementById("dropDownContent").style.display = "none";
+    }
+)
 
+document.getElementById("history2").addEventListener("click",
+    function(){
+        document.getElementById("dropDownContent2").style.display = "none";
+    }
+)
 
