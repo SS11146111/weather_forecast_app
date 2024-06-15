@@ -592,6 +592,10 @@ video {
   position: absolute;
 }
 
+.relative {
+  position: relative;
+}
+
 .left-10 {
   left: 2.5rem;
 }
@@ -602,6 +606,10 @@ video {
 
 .top-32 {
   top: 8rem;
+}
+
+.start-0 {
+  inset-inline-start: 0px;
 }
 
 .z-40 {
@@ -661,7 +669,7 @@ video {
 }
 
 .h-h-custom {
-  height: 540px;
+  height: 590px;
 }
 
 .w-14 {
@@ -690,6 +698,14 @@ video {
 
 .flex-row {
   flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-start {
+  justify-content: flex-start;
 }
 
 .justify-between {
@@ -958,6 +974,59 @@ h1{
   overflow-wrap: break-word;
 }
 
+#caret{
+  position: relative;
+  left: 224px;
+  top: -40px;
+  z-index: 79;
+}
+
+#dropDownContent {
+  position: absolute;
+  background-color: rgb(236, 228, 219);
+  width: 220px;
+  height: auto;
+  z-index: 90;
+  top: 138px;
+  left: 22px;
+}
+
+#dropDownContent a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+#dropDownContent a:hover {
+  background-color: white;
+}
+
+#close{
+  background-color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 2px;
+  font-size: small;
+  font-weight: bold;
+  margin: 2px;
+  margin-left: 200px;
+}
+
+.historyID:hover{
+  background-color: white
+}
+
+.historyID{
+  font-size: small;
+}
+
+.hover\:bg-blue-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-slate-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
@@ -968,3 +1037,7 @@ h1{
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.hover\:text-blue-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}

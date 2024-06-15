@@ -35,12 +35,29 @@ document.getElementById("enter").addEventListener("click",
 
 function getCurrentWeatherReport(city)
 {   
+    let flag = false;
+    city = city.toUpperCase();
+    let storedcityData = JSON.parse(localStorage.getItem("cityData")) || [];
+    
+    for(let c of storedcityData)
+        {
+            if(c == city)
+                {   
+                    flag=true;
+                }
+        }
+    if(flag == false)
+        {
+            city = city.toUpperCase();
+            storedcityData.push(city);
+            localStorage.setItem("cityData", JSON.stringify(storedcityData));
+
+        }
     fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no")
     //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no")
     .then(res => res.json())
     .then(json => {
        
-        console.log(json)
         document.getElementById("report").style.display = "block";
 
         document.getElementById("myCity").innerHTML = city.toUpperCase();
@@ -217,4 +234,60 @@ function introfun(){
 function moreDataForecast(){
     location.href()
 }
+
+document.getElementById("caret").addEventListener("click",
+    function(){
+
+       let parent = document.getElementById("history");
+       parent.innerHTML = "";
+       let storedcityData = JSON.parse(localStorage.getItem("cityData"))
+      
+       if(storedcityData == null)
+       {
+            document.getElementById("dropDownContent").style.display ="none";
+       }
+       else
+       {
+        document.getElementById("dropDownContent").style.display ="block";
+       
+
+         for(let i=0; i<storedcityData.length; i++)
+            {
+                let b = document.createElement("button");
+                b.innerHTML=storedcityData[i];
+                b.style.padding = "4px";
+                b.classList.add("historyID");
+                parent.appendChild(b)
+                
+            }  
+       }
+
+       search()
+
+})
+
+document.getElementById("close").addEventListener("click",
+    function(){
+
+       document.getElementById("dropDownContent").style.display ="none";
+
+})
+
+
+function search(){
+    let searchHistory = document.getElementsByClassName("historyID");
+    let city;
+    for(let i=0; i<searchHistory.length; i++)
+        {
+            searchHistory[i].addEventListener("click",
+                function(){
+                    city = searchHistory[i].innerHTML;
+                    document.getElementById("cityName").value = city;
+                }
+            )
+        }
+
+}
+
+
 
