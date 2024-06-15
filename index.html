@@ -39,9 +39,10 @@
             <input type="text" id="cityName" name="cityName" class="m-2 rounded-md p-1 w-60" placeholder="e.g., Shillong, Guwahati">
             <button id="enter"><img src='/images/arrow.png' width=20 height=20 alt='enter'/></button>
             <i class="fa fa-caret-down bg-blue-600 rounded-md text-center p-2 relative text-white hover:bg-blue-200 hover:text-blue-600" aria-hidden="true" id="caret"></i>
-            <div id="dropDownContent" class="hidden">
-                <button id="close">X</button>
-                <div id="history" class="flex flex-col justify-start"></div>
+            <div id="dropDownContent" class="hidden rounded-md">
+                <div class="flex"><button id="clr">cls</button><button id="close">X</button></div>
+                <hr>
+                <div id="history" class="flex flex-col"></div>
             </div>
         </div>
         
@@ -95,6 +96,12 @@
                 <input type="number" id="days" name="days" class="m-2 rounded-md p-1 w-14">
             </div>
             <button id="enterForecast" class="m-2"><img src='/images/arrow.png' width=20 height=20 alt='enter'/></button>
+        </div>
+        <i class="fa fa-caret-down bg-blue-600 rounded-md text-center p-2 relative text-white hover:bg-blue-200 hover:text-blue-600" aria-hidden="true" id="caret2"></i>
+        <div id="dropDownContent2" class="hidden rounded-md">
+            <div class="flex"><button id="clr2">cls</button><button id="close2">X</button></div>
+            <hr>
+            <div id="history2" class="flex flex-col"></div>
         </div>
         <div class="flex bg-white rounded-md m-4" id="forecastReport">
         </div>
