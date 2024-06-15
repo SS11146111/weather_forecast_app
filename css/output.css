@@ -608,10 +608,6 @@ video {
   top: 8rem;
 }
 
-.start-0 {
-  inset-inline-start: 0px;
-}
-
 .z-40 {
   z-index: 40;
 }
@@ -702,10 +698,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.justify-start {
-  justify-content: flex-start;
 }
 
 .justify-between {
@@ -983,7 +975,7 @@ h1{
 
 #dropDownContent {
   position: absolute;
-  background-color: rgb(236, 228, 219);
+  background-color: white;
   width: 220px;
   height: auto;
   z-index: 90;
@@ -1011,15 +1003,99 @@ h1{
   font-size: small;
   font-weight: bold;
   margin: 2px;
-  margin-left: 200px;
+  margin-left: 176px;
+}
+
+#history{
+  align-items: flex-start;
+}
+
+#history2{
+  align-items: flex-start;
+}
+
+#caret2{
+  position: relative;
+  left: 386px;
+  top: -48px;
+  z-index: 80;
+}
+
+#dropDownContent2 {
+  position: absolute;
+  background-color: white;
+  width: 220px;
+  height: auto;
+  z-index: 90;
+  top: 138px;
+  left: 175px;
+}
+
+#dropDownContent2 a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+#dropDownContent2 a:hover {
+  background-color: white;
+}
+
+#close2{
+  background-color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 2px;
+  font-size: small;
+  font-weight: bold;
+  margin: 2px;
+  margin-left: 176px;
+}
+
+#clr{
+  background-color: rgb(24, 145, 8);
+  border: 2px solid rgb(6, 104, 6);
+  border-radius: 5px;
+  padding: 2px;
+  font-size: small;
+  font-weight: bold;
+  margin: 2px;
+  color: white;
+}
+
+#clr2{
+  background-color: rgb(24, 145, 8);
+  border: 2px solid rgb(6, 104, 6);
+  border-radius: 5px;
+  padding: 2px;
+  font-size: small;
+  font-weight: bold;
+  margin: 2px;
+  color: white;
 }
 
 .historyID:hover{
-  background-color: white
+  background-color: rgb(229, 228, 228)
 }
 
 .historyID{
   font-size: small;
+  width: 220px;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.historyID2:hover{
+  background-color: rgb(229, 228, 228)
+}
+
+.historyID2{
+  font-size: small;
+  width: 220px;
+  text-align: left;
+  border-radius: 6px;
 }
 
 .hover\:bg-blue-200:hover {

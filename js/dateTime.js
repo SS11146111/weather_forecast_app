@@ -119,6 +119,24 @@ document.getElementById("cityForecast").addEventListener("change",
 })
 
 function getForecast(city){
+    let flag = false;
+    city = city.toUpperCase();
+    let storedcityData = JSON.parse(localStorage.getItem("forecastData")) || [];
+    
+    for(let c of storedcityData)
+        {
+            if(c == city)
+                {   
+                    flag=true;
+                }
+        }
+    if(flag == false)
+        {
+            city = city.toUpperCase();
+            storedcityData.push(city);
+            localStorage.setItem("forecastData", JSON.stringify(storedcityData));
+
+        }
     document.getElementById("forecastReport").innerHTML = "";
     document.getElementById("more_data2").style.display = "block";
 
@@ -266,12 +284,68 @@ document.getElementById("caret").addEventListener("click",
 
 })
 
+document.getElementById("caret2").addEventListener("click",
+    function(){
+
+       let parent = document.getElementById("history2");
+       parent.innerHTML = "";
+       let storedcityData = JSON.parse(localStorage.getItem("forecastData"))
+      
+       if(storedcityData == null)
+       {
+            document.getElementById("dropDownContent2").style.display ="none";
+       }
+       else
+       {
+        document.getElementById("dropDownContent2").style.display ="block";
+       
+
+         for(let i=0; i<storedcityData.length; i++)
+            {
+                let b = document.createElement("button");
+                b.innerHTML=storedcityData[i];
+                b.style.padding = "4px";
+                b.classList.add("historyID2");
+                parent.appendChild(b)
+                
+            }  
+       }
+
+       search2()
+
+})
+
 document.getElementById("close").addEventListener("click",
     function(){
 
        document.getElementById("dropDownContent").style.display ="none";
 
 })
+
+document.getElementById("clr").addEventListener("click",
+    function(){
+        document.getElementById("history").innerHTML = "";
+        localStorage.removeItem("cityData");
+        document.getElementById("dropDownContent").style.display ="none";
+
+})
+
+document.getElementById("close2").addEventListener("click",
+    function(){
+
+       document.getElementById("dropDownContent2").style.display ="none";
+
+})
+
+document.getElementById("clr2").addEventListener("click",
+    function(){
+        document.getElementById("history2").innerHTML = "";
+        localStorage.removeItem("forecastData");
+        document.getElementById("dropDownContent2").style.display ="none";
+
+})
+
+
 
 
 function search(){
@@ -283,6 +357,21 @@ function search(){
                 function(){
                     city = searchHistory[i].innerHTML;
                     document.getElementById("cityName").value = city;
+                }
+            )
+        }
+
+}
+
+function search2(){
+    let searchHistory = document.getElementsByClassName("historyID2");
+    let city;
+    for(let i=0; i<searchHistory.length; i++)
+        {
+            searchHistory[i].addEventListener("click",
+                function(){
+                    city = searchHistory[i].innerHTML;
+                    document.getElementById("cityForecast").value = city;
                 }
             )
         }
