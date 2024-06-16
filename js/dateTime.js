@@ -427,7 +427,7 @@ function search2(){
                 function(){
                     city = searchHistory[i].innerHTML;
                     document.getElementById("cityForecast").value = city;
-                    getForecast(city)
+            
                 }
             )
         }

@@ -15,32 +15,30 @@
     
         <title>Weather Report</title>
     </head>
-    <body class="bg-fixed bg-no-repeat bg-cover" style="background-image: url(/images/background.png)">
-        <nav class="bg-blue-600 text-center p-4 z-40 flex flex-row justify-between">
-            <img src="/images/icon.png" width=80 height=5 alt="forecast-icon">
-            
-            <h1 class="text-white font-bold text-4xl p-4">Weather Forecast</h1>
-                
-            <div class="flex flex-row">
-                <img src='/images/schedule.png' width=40 height=20 alt='calendar' class="self-center"/>
-                <h1 class="text-yellow-300 font-bold text-2xl p-2" id="displayDate"></h1>
+    <body class="bg-fixed bg-no-repeat bg-cover overflow-auto md:overflow-auto lg:overflow-auto" style="background-image: url(/images/background.png)">
+        <nav class="bg-gradient-to-b from-[rgb(4,40,119)] via-[rgb(26,73,228)] to-[rgb(4,40,119)] text-center p-4 z-40 flex justify-between w-[375px] md:w-[768px]">
+                <img src="/images/icon.png" width=20 height=5 alt="forecast-icon">
+                <h1 class="text-white font-bold text-2xl">Weather Report</h1>
+            <div class="flex flex-row ml-2">
+                <img src='/images/schedule.png' width=20 height=20 alt='calendar' class="self-center"/>
+                <h1 class="text-yellow-300 font-bold text-xs mt-[10px]" id="displayDate"></h1>
             </div>        
         </nav>
 
-        <div class="flex justify-between h-[590px] m-4 bg-white rounded-lg shadow-2xl shadow-blue-900 ">
-            <div class = "w-80 m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-cover bg-center" id="div1" style="background-image: url(/images/weather.gif) ">
+        <div class="flex flex-col md: m-4 bg-white rounded-lg shadow-2xl shadow-blue-900 ">
+            <div class = "w-80 h-[440px] md:w-[700px] md:m-[20px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-cover bg-center" id="div1" style="background-image: url(/images/weather.gif) ">
                 <h3 class="text-center p-2 bg-blue-400 font-bold">Forecast</h3>
                 <table class=" bg-blue-200" id="table1"></table>
             </div>
-            <div class = "w-80 m-4 border-2 border-solid border-[rgb(125, 204, 230)] " id="div4" style="background-image: url(/images/location.gif)">
+            <div class = "w-80 h-[440px] md:w-[700px] m-4 border-2 border-solid border-[rgb(125, 204, 230)]" id="div4" style="background-image: url(/images/location.gif)">
                 <h3 class="text-center p-2 bg-blue-400 font-bold">Location</h3>
                 <table class=" bg-blue-200" id="table4"></table>
             </div>
-            <div class = "w-80 m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-cover bg-center" id="div2" style="background-image: url(/images/air_quality.gif)">
+            <div class = "w-80 h-[440px] md:w-[700px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-cover bg-center" id="div2" style="background-image: url(/images/air_quality.gif)">
                 <h3 class="text-center p-2 bg-blue-400 font-bold">Air Quality</h3>
-                <table class=" bg-blue-200 h-[300px]" id="table2"></table>
+                <table class=" bg-blue-200" id="table2"></table>
             </div>
-            <div class = "w-80 m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-blue-200" id="div3" style="background-image: url(/images/no_notification.gif)">
+            <div class = "w-80 h-[440px] md:w-[700px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-blue-200" id="div3" style="background-image: url(/images/no_notification.gif)">
                 <h3 class="text-center p-2 bg-blue-400 font-bold">Alerts</h3>
                 <table class=" bg-blue-200" id="table3"></table>
             </div>

@@ -242,7 +242,7 @@ function displayData(){
                     }
                     else if(json.alerts.alert.length == 0){
                         document.getElementById("div3").style.backgroundImage = "url('/images/no_notification.gif')";
-                        document.getElementById("table3").style.display = "none";
+        
                     }
 
             })
