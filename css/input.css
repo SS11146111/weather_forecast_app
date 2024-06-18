@@ -4,7 +4,7 @@
 
 .style{
     width: 288px;
-    height: 354px;
+ 
     background-color: rgb(96 165 250);
     border-radius: 5px;
     margin: 16px;
@@ -37,11 +37,10 @@
 }
 
 #introImg{
-    width: 980px;
-    height: 380px;
+    width: 600px;
+    height: 350px;
     object-fit: fill;
 }
-
 
 #div3Img{
     height: 480px;
@@ -95,6 +94,13 @@
     #not_found{
         height: 320px;
         margin-left: 130px;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    #not_found{
+        height: 320px;
+        margin-left: 135px;
     }
 
 }
