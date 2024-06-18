@@ -251,7 +251,7 @@ function getForecast(city){
                 div.appendChild(img);
                 setTimeout(()=>{
                     location.reload()
-                 },2000)
+                 },3000)
 
         })
 }
