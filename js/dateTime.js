@@ -1,27 +1,34 @@
-window.onload()
-
 //display current date and time
-setInterval(()=>{
+function displayTime(){
 
-    fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
-    .then(res => res.json())
-    .then(json => {
+    setInterval(async ()=>{
+        try
+        {
+            await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
+            .then(res => res.json())
+            .then(json => {
+        
+                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                let timestamp = Date.parse(json.datetime);
+                let date = new Date(timestamp);
+                let year = date.getFullYear(); // prints the year (e.g. 2021)
+                let month = months[date.getMonth()]; // prints the month (0-11, where 0 = January)
+                let day = date.getDate(); // prints the day of the month (1-31)
+                let hour = date.getHours(); // prints the hour (0-23)
+                let min = date.getMinutes(); // prints the minute (0-59)
+                let sec = date.getSeconds(); // prints the second (0-59)
+        
+                document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
+            })
+        }
+        catch{
 
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let timestamp = Date.parse(json.datetime);
-        let date = new Date(timestamp);
-        let year = date.getFullYear(); // prints the year (e.g. 2021)
-        let month = months[date.getMonth()]; // prints the month (0-11, where 0 = January)
-        let day = date.getDate(); // prints the day of the month (1-31)
-        let hour = date.getHours(); // prints the hour (0-23)
-        let min = date.getMinutes(); // prints the minute (0-59)
-        let sec = date.getSeconds(); // prints the second (0-59)
+                document.getElementById("displayDate").innerHTML = "__/__/__"
+        }
+    },1000)
+}
 
-        document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
 
-    })
-
-},1000)
 
 
 //get current weather report on search
@@ -52,7 +59,7 @@ document.getElementById("enter").addEventListener("click",
     }
 )
 
-function getCurrentWeatherReport(city)
+async function getCurrentWeatherReport(city)
 {   
     let flag = false;
     city = city.toUpperCase();
@@ -72,8 +79,9 @@ function getCurrentWeatherReport(city)
             localStorage.setItem("cityData", JSON.stringify(storedcityData));
 
         }
-    fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no")
-    //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no")
+    try {
+    await fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no")
+    //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no") //for testing
     .then(res => res.json())
     .then(json => {
        
@@ -112,7 +120,7 @@ function getCurrentWeatherReport(city)
         )
     
     })
-    .catch(() =>  {
+}catch{
         
         let div = document.getElementById("report")
         div.style.display = "block";
@@ -121,13 +129,13 @@ function getCurrentWeatherReport(city)
         div.style.textAlign = "center";
         div.style.fontWeight = "bold";
         const img = document.createElement("img");
-        img.src = "/images/not_found.png";
+        img.src = "/images/not_found_2.png";
         div.appendChild(img);
         setTimeout(()=>{
            location.reload()
         },2000)
 
-    })
+}
 }
 
 //get weather forecast by search
@@ -177,7 +185,7 @@ document.getElementById("gfl").addEventListener("click",
 )
 
 
-function getForecast(city){
+async function getForecast(city){
     let flag = false;
     city = city.toUpperCase();
     let storedcityData = JSON.parse(localStorage.getItem("forecastData")) || [];
@@ -207,7 +215,9 @@ function getForecast(city){
             const parent = document.getElementById("forecastReport");
             parent.appendChild(div);
         }
-    fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
+
+    try {
+    await fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
     //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
         .then(res => res.json())
         .then(json => 
@@ -237,7 +247,8 @@ function getForecast(city){
                 )
             }
         )
-        .catch(() =>  {
+    }
+    catch{
         
                 let div = document.getElementById("forecastReport")
                 div.style.display = "block";
@@ -245,15 +256,15 @@ function getForecast(city){
                 div.style.padding =  "10px";
                 div.style.textAlign = "center";
                 div.style.fontWeight = "bold";
-                const img = document.createElement("img");
-                img.src = "/images/not_found_2.png";
-                img.id = "not_found";
-                div.appendChild(img);
+                let img = document.createElement("img");
+                img.src = "/images/not_found_2.png"
+                div.append(img)
                 setTimeout(()=>{
                     location.reload()
                  },3000)
 
-        })
+        
+    }
 }
 
 
@@ -269,13 +280,19 @@ function getCurrentByLocation()
     }
 }
   
-function showCity1(position) 
+async function showCity1(position) 
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638")
+    try {
+    await fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638")
         .then(res => res.json())
         .then(json => getCurrentWeatherReport(json[0].name))
+    }
+    catch(err)
+    {
+
+    }
 }
 
 function getForecastByLocation() 
@@ -288,17 +305,23 @@ function getForecastByLocation()
     }
 }
   
-function showCity2(position) 
+async function showCity2(position) 
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
 
-    fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638")
+    try{
+    await fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638")
         .then(res => res.json())
         .then(json => getForecast(json[0].name))
+    }
+    catch(err){
+
+    }
 }
 
 function introfun(){
+    displayTime();
     document.getElementById("forecastReport").innerHTML = "<img src='/images/intro.gif' id='introImg'/>";
 }
 
@@ -398,9 +421,6 @@ document.getElementById("clr2").addEventListener("click",
         document.getElementById("dropDownContent2").style.display ="none";
 
 })
-
-
-
 
 function search(){
     let searchHistory = document.getElementsByClassName("historyID");

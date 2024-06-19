@@ -1,25 +1,30 @@
 //display current date and time
-setInterval(()=>{
+function displayTime(){
 
-    fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
-    .then(res => res.json())
-    .then(json => {
+    setInterval(()=>{
 
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let timestamp = Date.parse(json.datetime);
-        let date = new Date(timestamp);
-        let year = date.getFullYear(); // prints the year (e.g. 2021)
-        let month = months[date.getMonth()]; // prints the month (0-11, where 0 = January)
-        let day = date.getDate(); // prints the day of the month (1-31)
-        let hour = date.getHours(); // prints the hour (0-23)
-        let min = date.getMinutes(); // prints the minute (0-59)
-        let sec = date.getSeconds(); // prints the second (0-59)
+        fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
+        .then(res => res.json())
+        .then(json => {
+    
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            let timestamp = Date.parse(json.datetime);
+            let date = new Date(timestamp);
+            let year = date.getFullYear(); // prints the year (e.g. 2021)
+            let month = months[date.getMonth()]; // prints the month (0-11, where 0 = January)
+            let day = date.getDate(); // prints the day of the month (1-31)
+            let hour = date.getHours(); // prints the hour (0-23)
+            let min = date.getMinutes(); // prints the minute (0-59)
+            let sec = date.getSeconds(); // prints the second (0-59)
+    
+            document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
+    
+        })
+    
+    },1000)
 
-        document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
+}
 
-    })
-
-},1000)
 
 function displayData(){
     const storedValues = [];

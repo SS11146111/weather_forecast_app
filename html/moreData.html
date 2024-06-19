@@ -15,15 +15,15 @@
     
         <title>Weather Report</title>
     </head>
-    <body class="bg-fixed bg-no-repeat bg-cover overflow-auto md:overflow-auto " style="background-image: url(/images/background.png)">
-        <nav class="bg-gradient-to-b from-[rgb(4,40,119)] via-[rgb(26,73,228)] to-[rgb(4,40,119)] text-center p-4 z-40 flex justify-between w-[375px] md:w-[768px] lg:w-[1024px] xl:w-[1280px]">
-                <img src="/images/icon.png" width=20 height=5 alt="forecast-icon">
-                <h1 class="text-white font-bold text-2xl">Weather Report</h1>
-            <div class="flex flex-row ml-2">
-                <img src='/images/schedule.png' width=20 height=20 alt='calendar' class="self-center"/>
-                <h1 class="text-yellow-300 font-bold text-xs mt-[10px]" id="displayDate"></h1>
-            </div>        
-        </nav>
+    <body class="bg-fixed bg-no-repeat bg-cover overflow-auto md:overflow-auto " style="background-image: url(/images/background.png)" onload="displayTime()">
+        <nav class="bg-gradient-to-b from-[rgb(4,40,119)] via-[rgb(26,73,228)] to-[rgb(4,40,119)] text-center p-4 z-40 flex justify-between w-[375px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] 2xl:w-[1536px]">
+            <img src="/images/icon.png" width=20 height=5 alt="forecast-icon " class="2xl:w-[50px]">
+            <h1 class="text-white font-bold text-2xl 2xl:mt-[4px] 2xl:text-3xl md:ml-[80px] 2xl:ml-[40px]">Weather Report</h1>
+        <div class="flex flex-row ml-2">
+            <img src='/images/schedule.png' width=20 height=20 alt='calendar' class="self-center"/>
+            <h1 class="text-yellow-300 font-bold text-xs mt-[10px]" id="displayDate"></h1>
+        </div>        
+    </nav>
 
         <div class="flex flex-col md: m-4 bg-white rounded-lg shadow-2xl shadow-blue-900 lg:flex lg:flex-row ">
             <div class = "w-80 h-[440px] md:w-[700px] md:m-[20px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-cover bg-center lg:w-[600px]" id="div1" style="background-image: url(/images/weather.gif) ">

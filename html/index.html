@@ -16,54 +16,55 @@
     <title>Weather Report</title>
 </head>
 <body class="bg-fixed bg-no-repeat bg-cover overflow-auto md:overflow-auto" style="background-image: url(/images/background.png)" onload="introfun()">
-    <nav class="bg-gradient-to-b from-[rgb(4,40,119)] via-[rgb(26,73,228)] to-[rgb(4,40,119)] text-center p-4 z-40 flex justify-between w-[375px] md:w-[768px] lg:w-[1024px] xl:w-[1280px]">
-            <img src="/images/icon.png" width=20 height=5 alt="forecast-icon">
-            <h1 class="text-white font-bold text-2xl">Weather Report</h1>
+    <nav class="bg-gradient-to-b from-[rgb(4,40,119)] via-[rgb(26,73,228)] to-[rgb(4,40,119)] text-center p-4 z-40 flex justify-between w-[375px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] 2xl:w-[1536px]">
+            <img src="/images/icon.png" width=20 height=5 alt="forecast-icon " class="2xl:w-[50px]">
+            <h1 class="text-white font-bold text-2xl 2xl:mt-[4px] 2xl:text-3xl md:ml-[80px] 2xl:ml-[40px]">Weather Report</h1>
         <div class="flex flex-row ml-2">
             <img src='/images/schedule.png' width=20 height=20 alt='calendar' class="self-center"/>
             <h1 class="text-yellow-300 font-bold text-xs mt-[10px]" id="displayDate"></h1>
         </div>        
     </nav>
 
-    <div id="msg1" class = "absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[220px] xl:left-[350px]">
+    <div id="msg1" class = "absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[80px] lg:left-[200px] xl:left-[350px] 2xl:left-[450px]">
         <h2 class="m-2">Enter valid city name or use current location</h2>
         <button id="ok" class="bg-white text-blue-600 rounded-md p-1 font-medium text-sm m-1 hover:bg-slate-300 hover:text-black">OK</button>
     </div>
 
-    <div id="msg2" class = " absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[220px]  xl:left-[350px]">
+    <div id="msg2" class = " absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[80px] lg:left-[200px]  xl:left-[350px] 2xl:left-[450px]">
         <h2 class="m-2">Enter valid city name & number of days or use current location</h2>
         <button id="ok2" class="bg-white text-blue-600 rounded-md p-1 font-medium text-sm m-1 hover:bg-slate-300 hover:text-black">OK</button>
     </div>
 
-    <div id="msg3" class = " absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[220px]  xl:left-[350px]">
+    <div id="msg3" class = " absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[80px] lg:left-[200px]  xl:left-[350px] 2xl:left-[450px]">
         <h2 class="m-2">Enter valid number of days with current location</h2>
         <button id="ok3" class="bg-white text-blue-600 rounded-md p-1 font-medium text-sm m-1 hover:bg-slate-300 hover:text-black">OK</button>
     </div>
+
  
-    <div class = "w-[370px] h-full m-[2px] bg-blue-200 shadow-2xl shadow-blue-900 rounded-lg md:w-[600px] md:ml-[80px] md:mt-5 md:mb-5 lg:w-[300px] xl:ml-[100px] xl:w-[350px]" id="container1">
+    <div class = "w-[370px] h-full m-[2px] bg-blue-200 shadow-2xl shadow-blue-900 rounded-lg md:w-[600px] md:ml-[80px] md:mt-5 md:mb-5 lg:w-[300px] xl:ml-[100px] xl:w-[350px] 2xl:mt-4" id="container1">
         <div class = "bg-blue-600 mt-1 mb-1 ml-4 mr-4 rounded-md shadow-md shadow-blue-800/50 ">
            <p class="m-2 text-white font-bold text-center p-2 lg:text-sm">Current Weather Report</p>
         </div>
         <div class = "bg-blue-400 ml-4 mr-4  rounded-md shadow-md shadow-blue-800/50 lg:flex lg:flex-row">
-            <label for="cityName" class="m-2 text-white font-bold lg:text-xs lg:mt-[13px]">City Name:</label>
-            <input type="text" id="cityName" name="cityName" class="m-2 rounded-md p-1 w-72 md:w-[360px] lg:w-[150px] xl:w-[200px]" placeholder="e.g., Shillong">
+            <label for="cityName" class="m-2 text-white font-bold lg:text-xs lg:mt-[13px] 2xl:text-[14px]">City Name:</label>
+            <input type="text" id="cityName" name="cityName" class="m-2 rounded-md p-1 w-72 md:w-[360px] lg:w-[150px] xl:w-[200px] 2xl:w-[190px]" placeholder="e.g., Shillong">
             <button id="enter"><img src='/images/arrow.png' width=20 height=20 alt='enter'/></button>
-            <i class="fa fa-caret-down absolute left-[290px] md:absolute md:ml-[252px] top-[162px] z-[79] bg-blue-600 rounded-md text-center p-2 text-white hover:bg-blue-200 hover:text-blue-600 lg:absolute lg:top-[146px] lg:left-[54px] xl:left-[125px] " aria-hidden="true" id="caret"></i>
-            <div id="dropDownContent" class="hidden rounded-md absolute bg-white w-[260px] md:w-[336px] md:ml-[184px] z-[90] top-[186px] left-[26px] lg:absolute lg:w-[130px] lg:ml-[156px] lg:top-[180px] xl:w-[172px] xl:top-[180px] xl:left-[50px]">
-                <div class="flex"><button id="clr" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white">cls</button><button id="close" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[1px] ml-[216px] md:ml-[292px] lg:ml-[86px] xl:absolute xl:left-[70px]">X</button></div>
+            <i class="fa fa-caret-down absolute left-[290px] md:absolute md:ml-[252px] top-[162px] z-[79] bg-blue-600 rounded-md text-center p-2 text-white hover:bg-blue-200 hover:text-blue-600 lg:absolute lg:top-[146px] lg:left-[54px] xl:left-[125px] 2xl:top-[150px] md:top-[150px]" aria-hidden="true" id="caret"></i>
+            <div id="dropDownContent" class="hidden rounded-md absolute bg-white w-[260px] md:w-[336px] md:ml-[184px] z-[90] top-[186px] left-[26px] lg:absolute lg:w-[130px] lg:ml-[156px] lg:top-[180px] xl:w-[172px] xl:top-[180px] xl:left-[50px] 2xl:top-[184px] 2xl:left-[54px]">
+                <div class="flex"><button id="clr" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white 2xl:text-xs">cls</button><button id="close" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[1px] ml-[216px] md:ml-[292px] lg:ml-[86px] xl:absolute xl:left-[70px]">X</button></div>
                 <hr>
                 <div id="history" class="flex flex-col items-start"></div>
             </div>
         </div>
         
-        <p class="text-center text-red-700 font-semibold text-sm lg:text-[8px] lg:m-[2px] mt-2 ml-2 xl:text-sm xl:ml-[8px]">OR</p>
+        <p class="text-center text-red-700 font-semibold text-sm lg:text-[8px] lg:m-[2px] mt-2 ml-2 xl:text-sm xl:ml-[8px] 2xl:mt-[4px]">OR</p>
         <button class="w-[336px] md:w-[568px] xl:w-[318px] bg-slate-400 m-2 ml-4 rounded-md text-center py-2 hover:bg-slate-300 shadow-lg shadow-gray-800/50 font-bold lg:w-[265px] lg:text-sm lg:mt-[2px]" onclick="getCurrentByLocation()">Use current location</button>
 
-        <div class="w-[284px] md:ml-[150px] bg-white rounded-md mt-2 ml-10 mr-4 shadow-lg shadow-gray-800/50 hidden pb-2 lg:ml-[16px] lg:w-[265px] xl:ml-[45px]" id="report">
+        <div class="w-[284px] md:ml-[150px] bg-white rounded-md mt-2 ml-10 mr-4 shadow-lg shadow-gray-800/50 hidden pb-2 lg:ml-[16px] lg:w-[265px] xl:ml-[45px] 2xl:mt-2 2xl:mb-2" id="report">
             <table>
                 <tr>
                     <td class="p-2 text-black font-bold col-span-2" id="myCity"></td>
-                    <td><button class="bg-blue-800 text-white rounded-md text-center p-2 hover:bg-slate-300 hover:text-black shadow-lg shadow-gray-800/50 font-bold text-xs mb-2 mt-2 ml-[10px] lg:w-[60px] lg:text-[8px]" id="more_data1">more data</button></td>
+                    <td><button class="bg-blue-800 text-white rounded-md text-center p-2 hover:bg-slate-300 hover:text-black shadow-lg shadow-gray-800/50 font-bold text-xs mb-2 mt-2 ml-[10px] lg:w-[60px] lg:text-[8px] 2xl:p-1 2xl:text-sm" id="more_data1">more data</button></td>
                 </tr>
                 <tr>
                     <td class="p-2 text-blue-800 font-bold bg-slate-200 flex flex-row"><p><i class="fa fa-thermometer-half ml-2 text-black " aria-hidden="true"></i> Temperature </p><p class="text-black pl-1">(</p><img src='/images/celsius.png' width=10 height=10 alt='celsius' class="m-1"/><p class="text-black pr-1">)</p> :</td>
@@ -89,28 +90,28 @@
         </div>
     </div>
 
-    <div class="w-[370px] md:w-[600px] md:ml-[80px] lg:absolute lg:top-[93px] lg:left-[320px] h-full relative m-[2px] bg-blue-200 shadow-2xl shadow-blue-900 rounded-lg lg:h-[490px] xl:ml-[150px] xl:h-[600px] xl:w-[700px]" id="container2" >
+    <div class="w-[370px] md:w-[600px] md:ml-[80px] lg:absolute lg:top-[93px] lg:left-[320px] h-full relative m-[2px] bg-blue-200 shadow-2xl shadow-blue-900 rounded-lg lg:h-[490px] xl:ml-[150px] xl:h-[600px] xl:w-[700px] 2xl:mt-[4px] 2xl:w-[950px]" id="container2" >
         <div class = "bg-blue-600 ml-4 mr-4 rounded-md shadow-md shadow-blue-800/50">
             <p class="m-2 text-white font-bold text-center p-2 lg:mt-0">Weather Forecast By Days</p>
          </div>
         <div class="flex flex-col lg:flex lg:flex-row">
-            <div class = "bg-blue-400 m-1 ml-5 mr-4 lg:w-[300px] rounded-md shadow-md shadow-blue-800/50  lg:flex lg:flex-row ">
-                <label for="cityForecast" class="m-2 text-white font-bold lg:text-xs">City Name:</label>
-                <input type="text" id="cityForecast" name="cityForecast" class=" m-2 rounded-md p-1 w-72 md:w-[360px] lg:w-[200px] xl:w-[300px]" placeholder="e.g.,Shillong,Guwahati">
+            <div class = "bg-blue-400 m-1 ml-5 mr-4 lg:w-[300px] rounded-md shadow-md shadow-blue-800/50  lg:flex lg:flex-row 2xl:w-[500px]">
+                <label for="cityForecast" class="m-2 text-white font-bold lg:text-xs 2xl:text-[14px]">City Name:</label>
+                <input type="text" id="cityForecast" name="cityForecast" class=" m-2 rounded-md p-1 w-72 md:w-[360px] lg:w-[200px] xl:w-[300px] 2xl:w-[600px]" placeholder="e.g.,Shillong,Guwahati">
             </div>
             <p class="text-center text-red-700 font-semibold text-sm self-center ml-2lg:ml-[2px] md:m-1">OR</p>
-            <button class="w-[336px] md:w-[568px] lg:w-[200px] lg:h-[45px] bg-slate-400 m-1 ml-4 mr-4 rounded-md text-center py-2 hover:bg-slate-300 shadow-lg shadow-gray-800/50 font-bold lg:p-[8px] lg:text-xs xl:w-[300px]" id="gfl">Use current location</button>
-            <div class="flex flex-row bg-blue-400 m-1 ml-4 mr-4 w-[336px] md:w-[568px] lg:w-[80px] lg:h-[45px] lg:m-1 lg:p-[2px] rounded-md shadow-md shadow-blue-800/50 md:mt-2">
-                <label for="days" id="daysLabel" class="m-1 ml-[25px] md:ml-[55px] lg:w-[20px] lg:ml-1 lg:text-xs lg:m-2 lg:mt-[10px] text-white font-bold mt-[12px]">Days:</label>
-                <input type="number" id="days" name="days" class="m-2 md:ml-[16px] rounded-md p-1 w-56 md:w-[360px] lg:w-[30px] lg:h-[25px] lg:m-[8px]">
+            <button class="w-[336px] md:w-[568px] lg:w-[200px] lg:h-[45px] bg-slate-400 m-1 ml-4 mr-4 rounded-md text-center py-2 hover:bg-slate-300 shadow-lg shadow-gray-800/50 font-bold lg:p-[8px] lg:text-xs xl:w-[300px] 2xl:w-[250px] 2xl:text-[14px]" id="gfl">Use current location</button>
+            <div class="flex flex-row bg-blue-400 m-1 ml-4 mr-4 w-[336px] md:w-[568px] lg:w-[80px] lg:h-[45px] lg:m-1 lg:p-[2px] rounded-md shadow-md shadow-blue-800/50 md:mt-2 2xl:w-[90px] 2xl:mt-[4px]">
+                <label for="days" id="daysLabel" class="m-1 ml-[25px] md:ml-[55px] lg:w-[20px] lg:ml-1 lg:text-xs lg:m-2 lg:mt-[10px] text-white font-bold mt-[12px] 2xl:mt-[12px]">Days:</label>
+                <input type="number" id="days" name="days" min="1" max="14" class="m-2 md:ml-[16px] rounded-md p-1 w-56 md:w-[360px] lg:w-[30px] lg:h-[25px] lg:m-[8px] 2xl:w-[40px]">
             </div>
             <button id="enterForecast" class="m-1 ml-[328px] md:ml-[300px] lg:ml-4 lg:w-[120px]"><img src='/images/arrow.png' width=20 height=20 alt='enter' class='lg:mr-2 md:mt-2'/></button>
         </div>
-        <button class="bg-blue-800 rounded-md text-center p-2 hover:bg-slate-300 hover:text-black shadow-lg shadow-gray-800/50 font-bold text-white hidden ml-[266px] md:ml-[490px] lg:text-[8px] lg:p-[2px] lg:ml-[535px] xl:mt-2 xl:mb-2 xl:ml-[635px]" id="more_data2" >more data</button>
-        <div class="flex bg-white rounded-md m-2 ml-4 mr-4 overflow-x-auto w-[336px] md:w-[566px] lg:h-[350px] lg:w-[560px] lg:ml-[20px] xl:h-[420px] xl:w-[662px]" id="forecastReport" ></div>
-        <i class="fa fa-caret-down absolute left-[291px] top-[84px] bg-blue-600 rounded-md text-center p-2 text-white hover:bg-blue-200 hover:text-blue-600 md:absolute md:ml-[175px] lg:absolute lg:left-[81px] lg:mt-[0px] md:top-[60px] xl:left-[112px]" aria-hidden="true" id="caret2"></i>
-        <div id="dropDownContent2" class="hidden rounded-md absolute bg-white w-[260px] z-[90] top-[130px] left-[30px] md:w-[336px] md:ml-[146px] md:top-[100px] lg:w-[190px] lg:ml-[60px] lg:top-[96px] xl:w-[200px]">
-            <div class="flex"><button id="clr2" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white">cls</button><button id="close2" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[2px] ml-[216px] md:ml-[292px] lg:ml-[145px] xl:ml-[156px]">X</button></div>
+        <button class="bg-blue-800 rounded-md text-center p-2 hover:bg-slate-300 hover:text-black shadow-lg shadow-gray-800/50 font-bold text-white hidden ml-[266px] md:ml-[490px] lg:text-[8px] lg:p-[2px] lg:ml-[535px] xl:mt-2 xl:mb-2 xl:ml-[635px] 2xl:ml-[850px] 2xl:p-2 2xl:text-[13px]" id="more_data2" >more data</button>
+        <div class="flex bg-white rounded-md m-2 ml-4 mr-4 overflow-x-auto w-[336px] md:w-[566px] lg:h-[350px] lg:w-[560px] lg:ml-[20px] xl:h-[420px] xl:w-[662px] 2xl:w-[910px] 2xl:h-[420px]" id="forecastReport" ></div>
+        <i class="fa fa-caret-down absolute left-[291px] top-[84px] bg-blue-600 rounded-md text-center p-2 text-white hover:bg-blue-200 hover:text-blue-600 md:absolute md:ml-[175px] lg:absolute lg:left-[81px] lg:mt-[0px] md:top-[60px] xl:left-[112px] 2xl:left-[312px]" aria-hidden="true" id="caret2"></i>
+        <div id="dropDownContent2" class="hidden rounded-md absolute bg-white w-[260px] z-[90] top-[130px] left-[30px] md:w-[336px] md:ml-[146px] md:top-[100px] lg:w-[190px] lg:ml-[60px] lg:top-[96px] xl:w-[200px] 2xl:left-[34px] 2xl:w-[400px]">
+            <div class="flex"><button id="clr2" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white">cls</button><button id="close2" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[2px] ml-[216px] md:ml-[292px] lg:ml-[145px] xl:ml-[156px] 2xl:ml-[355px]">X</button></div>
             <hr>
             <div id="history2" class="flex flex-col items-start"></div>
         </div>
