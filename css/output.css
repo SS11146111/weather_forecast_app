@@ -1087,7 +1087,6 @@ video {
 
 .historyID{
   font-size: small;
-  width: 220px;
   text-align: left;
   border-radius: 6px;
 }
@@ -1098,7 +1097,6 @@ video {
 
 .historyID2{
   font-size: small;
-  width: 220px;
   text-align: left;
   border-radius: 6px;
 }
@@ -1107,33 +1105,7 @@ video {
   height: 300px;
 }
 
-@media screen and (max-width: 375px){
-  #not_found{
-    height: 320px;
-    margin-left: 10px;
-  }
-}
-
-@media screen and (max-width: 768px){
-  #not_found{
-    height: 320px;
-    margin-left: 130px;
-  }
-}
-
-@media screen and (max-width: 1024px){
-  #not_found{
-    height: 320px;
-    margin-left: 135px;
-  }
-}
-
 @media screen and (max-width: 1280px){
-  #not_found{
-    height: 320px;
-    margin-left: 145px;
-  }
-
   #introImg{
     width: 662px;
     height: 420px;
@@ -1148,6 +1120,56 @@ video {
     margin: 16px;
     flex-shrink: 0;
     padding-top: 30px;
+  }
+}
+
+@media screen and (max-width: 1536px){
+  #not_found2{
+    height: 320px;
+    margin-left: 270px;
+  }
+
+  #introImg{
+    width: 910px;
+    height: 420px;
+    -o-object-fit: fill;
+       object-fit: fill;
+  }
+
+  .style{
+    width: 288px;
+    background-color: rgb(96 165 250);
+    border-radius: 5px;
+    margin: 16px;
+    flex-shrink: 0;
+    padding-top: 20px;
+  }
+
+  #paraCnd{
+    overflow-wrap: break-word;
+    padding: 8px;
+  }
+
+  .historyID:hover{
+    background-color: rgb(229, 228, 228)
+  }
+
+  .historyID{
+    font-size: small;
+    text-align: left;
+    width: 172px;
+    border-radius: 6px;
+  }
+
+  .historyID2:hover{
+    background-color: rgb(229, 228, 228)
+  }
+
+  .historyID2{
+    font-size: small;
+    text-align: left;
+    width: 400px;
+    border-radius: 6px;
   }
 }
 
@@ -1176,12 +1198,16 @@ video {
     position: absolute;
   }
 
-  .md\:left-\[220px\] {
-    left: 220px;
+  .md\:left-\[80px\] {
+    left: 80px;
   }
 
   .md\:top-\[100px\] {
     top: 100px;
+  }
+
+  .md\:top-\[150px\] {
+    top: 150px;
   }
 
   .md\:top-\[60px\] {
@@ -1288,6 +1314,10 @@ video {
 @media (min-width: 1024px) {
   .lg\:absolute {
     position: absolute;
+  }
+
+  .lg\:left-\[200px\] {
+    left: 200px;
   }
 
   .lg\:left-\[320px\] {
@@ -1605,6 +1635,143 @@ video {
   .xl\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:left-\[312px\] {
+    left: 312px;
+  }
+
+  .\32xl\:left-\[34px\] {
+    left: 34px;
+  }
+
+  .\32xl\:left-\[450px\] {
+    left: 450px;
+  }
+
+  .\32xl\:left-\[54px\] {
+    left: 54px;
+  }
+
+  .\32xl\:top-\[150px\] {
+    top: 150px;
+  }
+
+  .\32xl\:top-\[184px\] {
+    top: 184px;
+  }
+
+  .\32xl\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .\32xl\:ml-\[355px\] {
+    margin-left: 355px;
+  }
+
+  .\32xl\:ml-\[40px\] {
+    margin-left: 40px;
+  }
+
+  .\32xl\:ml-\[850px\] {
+    margin-left: 850px;
+  }
+
+  .\32xl\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
+  .\32xl\:mt-4 {
+    margin-top: 1rem;
+  }
+
+  .\32xl\:mt-\[12px\] {
+    margin-top: 12px;
+  }
+
+  .\32xl\:mt-\[4px\] {
+    margin-top: 4px;
+  }
+
+  .\32xl\:h-\[420px\] {
+    height: 420px;
+  }
+
+  .\32xl\:w-\[1536px\] {
+    width: 1536px;
+  }
+
+  .\32xl\:w-\[190px\] {
+    width: 190px;
+  }
+
+  .\32xl\:w-\[250px\] {
+    width: 250px;
+  }
+
+  .\32xl\:w-\[400px\] {
+    width: 400px;
+  }
+
+  .\32xl\:w-\[40px\] {
+    width: 40px;
+  }
+
+  .\32xl\:w-\[500px\] {
+    width: 500px;
+  }
+
+  .\32xl\:w-\[50px\] {
+    width: 50px;
+  }
+
+  .\32xl\:w-\[600px\] {
+    width: 600px;
+  }
+
+  .\32xl\:w-\[90px\] {
+    width: 90px;
+  }
+
+  .\32xl\:w-\[910px\] {
+    width: 910px;
+  }
+
+  .\32xl\:w-\[950px\] {
+    width: 950px;
+  }
+
+  .\32xl\:p-1 {
+    padding: 0.25rem;
+  }
+
+  .\32xl\:p-2 {
+    padding: 0.5rem;
+  }
+
+  .\32xl\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .\32xl\:text-\[13px\] {
+    font-size: 13px;
+  }
+
+  .\32xl\:text-\[14px\] {
+    font-size: 14px;
+  }
+
+  .\32xl\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .\32xl\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 }
 
