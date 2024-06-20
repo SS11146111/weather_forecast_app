@@ -1,10 +1,9 @@
 //display current date and time
 function displayTime(){
 
-    setInterval(async ()=>{
-        try
-        {
-            await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
+    setInterval(()=>{
+      try{
+        fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
             .then(res => res.json())
             .then(json => {
         
@@ -20,11 +19,11 @@ function displayTime(){
         
                 document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
             })
-        }
-        catch{
-
-                document.getElementById("displayDate").innerHTML = "__/__/__"
-        }
+      }
+      catch(err){
+        document.getElementById("displayDate").innerHTML = ""
+      }
+    
     },1000)
 }
 
@@ -59,7 +58,7 @@ document.getElementById("enter").addEventListener("click",
     }
 )
 
-async function getCurrentWeatherReport(city)
+function getCurrentWeatherReport(city)
 {   
     let flag = false;
     city = city.toUpperCase();
@@ -79,12 +78,29 @@ async function getCurrentWeatherReport(city)
             localStorage.setItem("cityData", JSON.stringify(storedcityData));
 
         }
-    try {
-    await fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no")
+    Promise.race([fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no"),new Promise((resolve, reject) => {
+        // Reject after 5 seconds
+        setTimeout(() => reject(new Error("Operation timed out")), 2000);
+    })])
     //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no") //for testing
-    .then(res => res.json())
+    .then(res =>{
+
+        if(res.status == 200)
+        {
+            return res.json();
+            
+        }
+        else if(res.status == 400 )
+        {
+            throw new Error('No matching location found');
+        }
+        else
+        {
+                
+            throw new Error('Unknown Error Occurred!!!!!!');
+        }
+    })
     .then(json => {
-       
         document.getElementById("report").style.display = "block";
 
         document.getElementById("myCity").innerHTML = city.toUpperCase();
@@ -112,19 +128,18 @@ async function getCurrentWeatherReport(city)
         document.getElementById("weatherCnd").src="http:"+src;
         document.getElementById("weatherDesc").innerHTML = desc;
         document.getElementById("more_data1").addEventListener("click", 
-            function(){
-                location.href = `/html/moreData.html?city=`+city+`&type=current`;
-                //location.href = `/html/moreData.html?city=Guwahati&type=current`;
+        function(){
+            location.href = `/html/moreData.html?city=`+city+`&type=current`;
+            //location.href = `/html/moreData.html?city=Guwahati&type=current`;
 
-            }
+        }
         )
-    
     })
-}catch{
+    .catch((error)=>{
         
         let div = document.getElementById("report")
         div.style.display = "block";
-        div.innerHTML = "No matching location found";
+        div.innerHTML = error.message;
         div.style.padding =  "16px";
         div.style.textAlign = "center";
         div.style.fontWeight = "bold";
@@ -135,7 +150,7 @@ async function getCurrentWeatherReport(city)
            location.reload()
         },2000)
 
-}
+    })
 }
 
 //get weather forecast by search
@@ -185,7 +200,7 @@ document.getElementById("gfl").addEventListener("click",
 )
 
 
-async function getForecast(city){
+function getForecast(city){
     let flag = false;
     city = city.toUpperCase();
     let storedcityData = JSON.parse(localStorage.getItem("forecastData")) || [];
@@ -216,10 +231,27 @@ async function getForecast(city){
             parent.appendChild(div);
         }
 
-    try {
-    await fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no")
+    Promise.race([fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no"),new Promise((resolve, reject) => {
+        // Reject after 5 seconds
+        setTimeout(() => reject(new Error("Operation timed out")), 2000);
+    })])
     //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
-        .then(res => res.json())
+        .then(res => {
+            if(res.status == 200)
+                {
+                    return res.json();
+                    
+                }
+                else if(res.status == 400 )
+                {
+                    throw new Error('No matching location found');
+                }
+                else
+                {
+                        
+                    throw new Error('Unknown Error Occurred!!!');
+                }
+        })
         .then(json => 
             {
                 for(let i = 0; i<days ; i++)
@@ -247,12 +279,11 @@ async function getForecast(city){
                 )
             }
         )
-    }
-    catch{
+    .catch((error) => {
         
                 let div = document.getElementById("forecastReport")
                 div.style.display = "block";
-                div.innerHTML = "No matching location found";
+                div.innerHTML = error.message;
                 div.style.padding =  "10px";
                 div.style.textAlign = "center";
                 div.style.fontWeight = "bold";
@@ -264,7 +295,7 @@ async function getForecast(city){
                  },3000)
 
         
-    }
+    })
 }
 
 
@@ -280,19 +311,43 @@ function getCurrentByLocation()
     }
 }
   
-async function showCity1(position) 
+function showCity1(position) 
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    try {
-    await fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638")
-        .then(res => res.json())
-        .then(json => getCurrentWeatherReport(json[0].name))
-    }
-    catch(err)
-    {
+    Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
+        // Reject after 5 seconds
+        setTimeout(() => reject(new Error("Operation timed out")), 2000);
+    })])
+        .then(res => {
+            if(res.status == 200)
+                {
+                    return res.json();
+                    
+                }
+                else
+                {
+                        
+                    throw new Error('Error');
+                }
+        })
+        .then(json => {
+            if(json[0].name != undefined)
+                {
 
-    }
+                    getCurrentWeatherReport(json[0].name)
+                }
+            else{
+               
+                    throw new Error('Error');
+                }
+                
+        })
+        .catch((error)=>{
+
+            alert(error.message);
+        })
+    
 }
 
 function getForecastByLocation() 
@@ -305,19 +360,44 @@ function getForecastByLocation()
     }
 }
   
-async function showCity2(position) 
+function showCity2(position) 
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
 
-    try{
-    await fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638")
-        .then(res => res.json())
-        .then(json => getForecast(json[0].name))
-    }
-    catch(err){
+    Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
+        // Reject after 5 seconds
+        setTimeout(() => reject(new Error("Operation timed out")), 2000);
+    })])
+        .then(res => {
+            if(res.status == 200)
+                {
+                    return res.json();
+                    
+                }
+                else
+                {
+                        
+                    throw new Error('Error');
+                }
+        })
+        .then(json => {
+            if(json[0].name != undefined)
+                {
 
-    }
+                    getForecast(json[0].name)
+                }
+            else{
+               
+                    throw new Error('Error');
+                }
+                
+        })
+        .catch((error)=>{
+
+            alert(error.message);
+        })
+
 }
 
 function introfun(){
