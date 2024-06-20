@@ -2,7 +2,7 @@
 function displayTime(){
 
     setInterval(()=>{
-      try{
+   
         fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
             .then(res => res.json())
             .then(json => {
@@ -19,10 +19,7 @@ function displayTime(){
         
                 document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
             })
-      }
-      catch(err){
-        document.getElementById("displayDate").innerHTML = ""
-      }
+      
     
     },1000)
 }
@@ -220,7 +217,7 @@ function getForecast(city){
 
         }
     document.getElementById("forecastReport").innerHTML = "";
-    document.getElementById("more_data2").style.display = "block";
+    
 
     const days = document.getElementById("days").value;
     for(let i=1; i<=days; i++)
@@ -270,7 +267,7 @@ function getForecast(city){
                     document.getElementsByClassName("style")[i].innerHTML = "<div class='bg-white mt-2 ml-4 mr-4 rounded-md'><table>"+day+max_temp+min_temp+max_wind+avg_vis+avg_humi+"</table></div><div class='bg-blue-800 rounded-md m-1 ml-4 mr-4 flex w-64' id='paraCnd'>"+imgSrc+desc+"</div>";
 
                 }
-
+                document.getElementById("more_data2").style.display = "block";
                 document.getElementById("more_data2").addEventListener("click",
                     function(){
                         location.href=`/html/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;

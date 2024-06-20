@@ -20,6 +20,7 @@ function displayTime(){
             document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
     
         })
+   
     
     },1000)
 
@@ -36,13 +37,7 @@ function displayData(){
 
     let storedValuesf = [];
     let storedKeysf = [];
-    const storedAirKeysf = [];
-    const storedAirValuesf = [];
-    const storedLocKeysf = [];
-    const storedLocValuesf = [];
-    const storedAlertKeysf = [];
-    const storedAlertValuesf = [];
-
+  
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const city = urlParams.get('city');
@@ -151,18 +146,16 @@ function displayData(){
                         let uv = (json.forecast.forecastday[i].day.uv == null)?"_":json.forecast.forecastday[i].day.uv;
                         let totalsnow_cm = (json.forecast.forecastday[i].day.totalsnow_cm == null)?"_":json.forecast.forecastday[i].day.totalsnow_cm.toFixed(2);
                         let totalprecip_mm = (json.forecast.forecastday[i].day.totalprecip_mm == null)?"_":json.forecast.forecastday[i].day.totalprecip_mm.toFixed(2);
-                        let totalprecip_in = (json.forecast.forecastday[i].day.totalprecip_in == null)?"_":json.forecast.forecastday[i].day.totalprecip_in;
                         let daily_will_it_rain = (json.forecast.forecastday[i].day.daily_will_it_rain == null)?"_":json.forecast.forecastday[i].day.daily_will_it_rain;
                         let daily_will_it_snow = (json.forecast.forecastday[i].day.daily_will_it_snow == null)?"_":json.forecast.forecastday[i].day.daily_will_it_snow;
-                        let avgtemp_c = (json.forecast.forecastday[i].day.avgtemp_c == null)?"_":json.forecast.forecastday[i].day.avgtemp_c.toFixed(2);
-                        let avgvis_km = (json.forecast.forecastday[i].day.avgvis_km == null)?"_":json.forecast.forecastday[i].day.avgvis_km.toFixed(2);
                         let avghumidity = (json.forecast.forecastday[i].day.avghumidity == null)?"_":json.forecast.forecastday[i].day.avghumidity;
                         
-                        storedKeysf.push("Date","UV index","Total Snow (cm)","Total Precipitation (mm)","Total Precipitation (in)","Will it rain?","Will it snow?","Avg Temp (c)","Avg Visibility (km)","Avg Humidity (%)");
-                        storedValuesf.push(date,uv,totalsnow_cm,totalprecip_mm,totalprecip_in,daily_will_it_rain,daily_will_it_snow,avgtemp_c,avgvis_km,avghumidity);
+                        storedKeysf.push("Date","UV index","Total Snow (cm)","Total Precipitation (in)","Will it rain?","Will it snow?","Avg Humidity (%)");
+                        storedValuesf.push(date,uv,totalsnow_cm,totalprecip_mm,daily_will_it_rain,daily_will_it_snow,avghumidity);
                         let table = document.createElement("table");
                         table.classList.add("tdesign");
                         table.style.width = "280px";
+                        
                         
                         for(let x=0;x<storedKeysf.length;x++)
                             {
