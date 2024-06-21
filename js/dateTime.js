@@ -1,3 +1,12 @@
+let errorMsg;
+
+//display current date and time and intro image
+function introfun(){
+    displayTime();
+    document.getElementById("forecastReport").innerHTML = "<img src='/images/intro.gif' id='introImg'/>";
+}
+
+/**---------------------------------------------------------------------------------------------------------------------------------------------- */
 
 //display current date and time
 function displayTime(){
@@ -20,16 +29,16 @@ function displayTime(){
         
                 document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
             })
-            .catch((error) => console.log(error.message))
+            .catch((error) => errorMsg = error.message)
       
-    
     },1000)
 }
 
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
-//get current weather report on search
+//get current weather report on search by name
 document.getElementById("enter").addEventListener("click",
     function()
     {
@@ -57,6 +66,7 @@ document.getElementById("enter").addEventListener("click",
     }
 )
 
+
 function getCurrentWeatherReport(city)
 {   
     let flag = false;
@@ -70,6 +80,7 @@ function getCurrentWeatherReport(city)
                     flag=true;
                 }
         }
+
     if(flag == false)
         {
             city = city.toUpperCase();
@@ -77,11 +88,11 @@ function getCurrentWeatherReport(city)
             localStorage.setItem("cityData", JSON.stringify(storedcityData));
 
         }
-    Promise.race([fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no"),new Promise((resolve, reject) => {
-        // Reject after 5 seconds
-        setTimeout(() => reject(new Error("Operation timed out")), 2000);
+    Promise.race([fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no"),
+        new Promise((resolve, reject) => {
+        setTimeout(() => reject(new Error("Operation timed out")), 10000);
     })])
-    //fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no") //for testing
+    // fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no")//for testing
     .then(res =>{
 
         if(res.status == 200)
@@ -89,14 +100,14 @@ function getCurrentWeatherReport(city)
             return res.json();
             
         }
-        else if(res.status == 400 )
+        else if(res.status == 400 || res.status == 404)
         {
             throw new Error('No matching location found');
         }
         else
         {
                 
-            throw new Error('Unknown Error Occurred!!!!!!');
+            throw new Error('Failed to Fetch Data!!!');
         }
     })
     .then(json => {
@@ -129,13 +140,13 @@ function getCurrentWeatherReport(city)
         document.getElementById("more_data1").addEventListener("click", 
         function(){
             location.href = `/html/moreData.html?city=`+city+`&type=current`;
-            //location.href = `/html/moreData.html?city=Guwahati&type=current`;
+            //location.href = `/html/moreData.html?city=Guwahati&type=current`; for testing
 
         }
         )
     })
     .catch((error)=>{
-        
+      
         let div = document.getElementById("report")
         div.style.display = "block";
         div.innerHTML = error.message;
@@ -146,20 +157,105 @@ function getCurrentWeatherReport(city)
         img.src = "/images/not_found_2.png";
         div.appendChild(img);
         setTimeout(()=>{
-           location.reload()
+          location.reload();
         },2000)
 
     })
 }
 
-//get weather forecast by search
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+//get weather report from current location 
+function getCurrentByLocation() 
+{
+    
+    if (navigator.geolocation) {
+        
+      navigator.geolocation.getCurrentPosition(showCity1);
+    } else { 
+      console.log("Geolocation is not supported by this browser.");
+    }
+}
+  
+function showCity1(position) 
+{
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    //let latitude = 333333; for testing
+    //let longitude = 333333; for testing
+    Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
+        setTimeout(() => reject(new Error("Operation timed out")), 10000);
+    })])
+        .then(res => {
+            if(res.status == 200)
+                {
+                    return res.json();
+                    
+                }
+                else
+                {
+                        
+                    throw new Error('Failed to Fetch Data!!!');
+                }
+        })
+        .then(json => {
+            //let j=undefined; for testing
+            if(json[0].name != undefined)
+                {
+                    getCurrentWeatherReport(json[0].name)
+                }
+            else{
+                    throw new Error('No matching location found');
+                }
+                
+        })
+        .catch((error)=>{
+
+            let div = document.getElementById("report")
+            div.style.display = "block";
+            div.innerHTML = error.message;
+            div.style.padding =  "16px";
+            div.style.textAlign = "center";
+            div.style.fontWeight = "bold";
+            const img = document.createElement("img");
+            img.src = "/images/not_found_2.png";
+            div.appendChild(img);
+            setTimeout(()=>{
+              location.reload();
+            },2000)
+        })
+    
+}
+
+/**---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+//get extended forecast on search by name
  document.getElementById("enterForecast").addEventListener("click",
     function(){
         const cityForecast = document.getElementById("cityForecast").value;
         const days = document.getElementById("days").value;
+  
         if(cityForecast != "" && days != "")
             {
-               getForecast(cityForecast);
+                if(days < 1 || days > 14)
+                    {
+                        document.getElementById("container1").style.display = "none";
+                        document.getElementById("container2").style.display = "none";
+                        document.getElementById("msg4").style.display = "block";
+                        document.getElementById("ok4").addEventListener("click",
+                            function(){
+                                   
+                                document.getElementById("msg4").style.display = "none";
+                                document.getElementById("container1").style.display = "block";
+                                document.getElementById("container2").style.display = "block";
+                            })
+                    }
+                else{
+                    getForecast(cityForecast);
+                }
+               
             }
         else {
             
@@ -175,30 +271,6 @@ function getCurrentWeatherReport(city)
         )}
     })
 
-document.getElementById("gfl").addEventListener("click",
-    function(){
-        const days = document.getElementById("days").value;
-        if(days!="")
-            {
-                getForecastByLocation();
-            }     
-        else
-        {
-            document.getElementById("container1").style.display = "none";
-            document.getElementById("container2").style.display = "none";
-            document.getElementById("msg3").style.display = "block";
-            document.getElementById("ok3").addEventListener("click",
-            function(){
-                document.getElementById("msg3").style.display = "none";
-                document.getElementById("container1").style.display = "block";
-                document.getElementById("container2").style.display = "block";
-            })
-            
-        }
-    }
-)
-
-
 function getForecast(city){
     let flag = false;
     city = city.toUpperCase();
@@ -211,6 +283,7 @@ function getForecast(city){
                     flag=true;
                 }
         }
+
     if(flag == false)
         {
             city = city.toUpperCase();
@@ -218,10 +291,11 @@ function getForecast(city){
             localStorage.setItem("forecastData", JSON.stringify(storedcityData));
 
         }
+
     document.getElementById("forecastReport").innerHTML = "";
     
-
     const days = document.getElementById("days").value;
+        
     for(let i=1; i<=days; i++)
         {
             const div = document.createElement("div");
@@ -231,24 +305,23 @@ function getForecast(city){
         }
 
     Promise.race([fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no"),new Promise((resolve, reject) => {
-        // Reject after 5 seconds
-        setTimeout(() => reject(new Error("Operation timed out")), 2000);
+        setTimeout(() => reject(new Error("Operation timed out")), 10000);
     })])
-    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no")
+    //fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q=Guwahati&days="+days+"&aqi=no&alerts=no") ; for testing
         .then(res => {
             if(res.status == 200)
                 {
                     return res.json();
                     
                 }
-                else if(res.status == 400 )
+                else if(res.status == 400 || res.status == 404)
                 {
                     throw new Error('No matching location found');
                 }
                 else
                 {
                         
-                    throw new Error('Unknown Error Occurred!!!');
+                    throw new Error('Failed to Fetch Data!!!');
                 }
         })
         .then(json => 
@@ -273,13 +346,14 @@ function getForecast(city){
                 document.getElementById("more_data2").addEventListener("click",
                     function(){
                         location.href=`/html/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;
-                        //location.href=`/html/moreData.html?city=Guwahati&days=`+days+`&type=forecast`;
+                        //location.href=`/html/moreData.html?city=Guwahati&days=`+days+`&type=forecast`; for testing
                     }
                 )
             }
         )
     .catch((error) => {
         
+                document.getElementById("more_data2").style.display = "none";
                 let div = document.getElementById("forecastReport")
                 div.style.display = "block";
                 div.innerHTML = error.message;
@@ -290,63 +364,53 @@ function getForecast(city){
                 div.classList.add("notFoundImg");
                 setTimeout(()=>{
                     location.reload()
-                 },3000)
+                    },2000)
 
         
     })
 }
 
+/**---------------------------------------------------------------------------------------------------------------------------------------------- */
 
-//get city name from current location
-function getCurrentByLocation() 
-{
-    
-    if (navigator.geolocation) {
-        
-      navigator.geolocation.getCurrentPosition(showCity1);
-    } else { 
-      console.log("Geolocation is not supported by this browser.");
-    }
-}
-  
-function showCity1(position) 
-{
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-    Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
-        // Reject after 5 seconds
-        setTimeout(() => reject(new Error("Operation timed out")), 2000);
-    })])
-        .then(res => {
-            if(res.status == 200)
-                {
-                    return res.json();
-                    
-                }
-                else
-                {
-                        
-                    throw new Error('Error');
-                }
-        })
-        .then(json => {
-            if(json[0].name != undefined)
-                {
-
-                    getCurrentWeatherReport(json[0].name)
-                }
-            else{
-               
-                    throw new Error('Error');
-                }
+//get extended weather on search by current location
+document.getElementById("gfl").addEventListener("click",
+    function(){
+        const days = document.getElementById("days").value;
+        if(days!="")
+            {
+                if(days < 1 || days > 14)
+                    {
+                        document.getElementById("container1").style.display = "none";
+                        document.getElementById("container2").style.display = "none";
+                        document.getElementById("msg4").style.display = "block";
+                        document.getElementById("ok4").addEventListener("click",
+                            function(){
+                                   
+                                document.getElementById("msg4").style.display = "none";
+                                document.getElementById("container1").style.display = "block";
+                                document.getElementById("container2").style.display = "block";
+                            })
+                    }
+                    else{
+                        getForecastByLocation();
+                    }
                 
-        })
-        .catch((error)=>{
-
-            alert(error.message);
-        })
-    
-}
+            }     
+        else
+        {
+            document.getElementById("container1").style.display = "none";
+            document.getElementById("container2").style.display = "none";
+            document.getElementById("msg3").style.display = "block";
+            document.getElementById("ok3").addEventListener("click",
+            function(){
+                document.getElementById("msg3").style.display = "none";
+                document.getElementById("container1").style.display = "block";
+                document.getElementById("container2").style.display = "block";
+            })
+            
+        }
+    }
+)
 
 function getForecastByLocation() 
 {
@@ -376,7 +440,7 @@ function showCity2(position)
                 else
                 {
                         
-                    throw new Error('Error');
+                    throw new Error('Failed to Fetch Data!!!');
                 }
         })
         .then(json => {
@@ -387,27 +451,32 @@ function showCity2(position)
                 }
             else{
                
-                    throw new Error('Error');
+                    throw new Error('No matching location found');
                 }
                 
         })
         .catch((error)=>{
 
-            alert(error.message);
+            
+            document.getElementById("more_data2").style.display = "none";
+            let div = document.getElementById("forecastReport")
+            div.style.display = "block";
+            div.innerHTML = error.message;
+            div.style.padding =  "10px";
+            div.style.textAlign = "center";
+            div.style.fontWeight = "bold";
+            div.style.backgroundImage = "url('/images/not_found_2.png')";
+            div.classList.add("notFoundImg");
+            setTimeout(()=>{
+                location.reload()
+                },2000)
         })
 
 }
 
-function introfun(){
-    displayTime();
-    document.getElementById("forecastReport").innerHTML = "<img src='/images/intro.gif' id='introImg'/>";
-}
+/**---------------------------------------------------------------------------------------------------------------------------------------------- */
 
-
-function moreDataForecast(){
-    location.href()
-}
-
+//dropdown list/city search history for current weather report
 document.getElementById("caret").addEventListener("click",
     function(){
 
@@ -434,11 +503,48 @@ document.getElementById("caret").addEventListener("click",
                 
             }  
        }
-
        search()
+})
+
+function search(){
+    let searchHistory = document.getElementsByClassName("historyID");
+    let city;
+    for(let i=0; i<searchHistory.length; i++)
+        {
+            searchHistory[i].addEventListener("click",
+                function(){
+                    city = searchHistory[i].innerHTML;
+                    document.getElementById("cityName").value = city;
+                    getCurrentWeatherReport(city)
+                }
+            )
+        }
+
+}
+
+document.getElementById("history").addEventListener("click",
+    function(){
+        document.getElementById("dropDownContent").style.display = "none";
+    }
+)
+
+document.getElementById("close").addEventListener("click",
+    function(){
+
+       document.getElementById("dropDownContent").style.display ="none";
 
 })
 
+document.getElementById("clr").addEventListener("click",
+    function(){
+        document.getElementById("history").innerHTML = "";
+        localStorage.removeItem("cityData");
+        document.getElementById("dropDownContent").style.display ="none";
+
+})
+/**---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+//dropdown list/city search history for extended weather report
 document.getElementById("caret2").addEventListener("click",
     function(){
 
@@ -470,52 +576,6 @@ document.getElementById("caret2").addEventListener("click",
 
 })
 
-document.getElementById("close").addEventListener("click",
-    function(){
-
-       document.getElementById("dropDownContent").style.display ="none";
-
-})
-
-document.getElementById("clr").addEventListener("click",
-    function(){
-        document.getElementById("history").innerHTML = "";
-        localStorage.removeItem("cityData");
-        document.getElementById("dropDownContent").style.display ="none";
-
-})
-
-document.getElementById("close2").addEventListener("click",
-    function(){
-
-       document.getElementById("dropDownContent2").style.display ="none";
-
-})
-
-document.getElementById("clr2").addEventListener("click",
-    function(){
-        document.getElementById("history2").innerHTML = "";
-        localStorage.removeItem("forecastData");
-        document.getElementById("dropDownContent2").style.display ="none";
-
-})
-
-function search(){
-    let searchHistory = document.getElementsByClassName("historyID");
-    let city;
-    for(let i=0; i<searchHistory.length; i++)
-        {
-            searchHistory[i].addEventListener("click",
-                function(){
-                    city = searchHistory[i].innerHTML;
-                    document.getElementById("cityName").value = city;
-                    getCurrentWeatherReport(city)
-                }
-            )
-        }
-
-}
-
 function search2(){
     let searchHistory = document.getElementsByClassName("historyID2");
     let city;
@@ -532,15 +592,25 @@ function search2(){
 
 }
 
-document.getElementById("history").addEventListener("click",
-    function(){
-        document.getElementById("dropDownContent").style.display = "none";
-    }
-)
-
 document.getElementById("history2").addEventListener("click",
     function(){
         document.getElementById("dropDownContent2").style.display = "none";
     }
 )
 
+document.getElementById("close2").addEventListener("click",
+    function(){
+
+       document.getElementById("dropDownContent2").style.display ="none";
+
+})
+
+document.getElementById("clr2").addEventListener("click",
+    function(){
+        document.getElementById("history2").innerHTML = "";
+        localStorage.removeItem("forecastData");
+        document.getElementById("dropDownContent2").style.display ="none";
+
+})
+
+/**--------------------------------------------------------------------------------------------------------------------------------------------- */

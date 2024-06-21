@@ -9,7 +9,6 @@
 
     
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
-    <script src="/js/dateTime.js" defer></script>
     <link rel="stylesheet" href="/css/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -25,19 +24,19 @@
         </div>        
     </nav>
 
-    <div id="msg1" class = "absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[80px] lg:left-[200px] xl:left-[350px] 2xl:left-[450px]">
-        <h2 class="m-2">Enter valid city name or use current location</h2>
-        <button id="ok" class="bg-white text-blue-600 rounded-md p-1 font-medium text-sm m-1 hover:bg-slate-300 hover:text-black">OK</button>
-    </div>
-
     <div id="msg2" class = " absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[80px] lg:left-[200px]  xl:left-[350px] 2xl:left-[450px]">
-        <h2 class="m-2">Enter valid city name & number of days or use current location</h2>
+        <h2 class="m-2">Enter valid city name + number of days or use current location + number of days</h2>
         <button id="ok2" class="bg-white text-blue-600 rounded-md p-1 font-medium text-sm m-1 hover:bg-slate-300 hover:text-black">OK</button>
     </div>
 
     <div id="msg3" class = " absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[80px] lg:left-[200px]  xl:left-[350px] 2xl:left-[450px]">
         <h2 class="m-2">Enter valid number of days with current location</h2>
         <button id="ok3" class="bg-white text-blue-600 rounded-md p-1 font-medium text-sm m-1 hover:bg-slate-300 hover:text-black">OK</button>
+    </div>
+
+    <div id="msg4" class = " absolute bg-blue-600 text-white text-center pt-5 shadow-2xl shadow-blue-900 rounded-lg hidden w-[284px] h-[120px] top-[150px] left-[52px] md:w-[600px] md:left-[80px] lg:left-[200px]  xl:left-[350px] 2xl:left-[450px]">
+        <h2 class="m-2">Enter valid number of days between 1 and 14</h2>
+        <button id="ok4" class="bg-white text-blue-600 rounded-md p-1 font-medium text-sm m-1 hover:bg-slate-300 hover:text-black">OK</button>
     </div>
 
  
@@ -116,6 +115,7 @@
             <div id="history2" class="flex flex-col items-start"></div>
         </div>
     </div> 
+    <script src="/js/dateTime.js"></script>
     
 </body>
 </html>
