@@ -1,3 +1,4 @@
+
 //display current date and time
 function displayTime(){
 
@@ -19,6 +20,7 @@ function displayTime(){
         
                 document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
             })
+            .catch((error) => console.log(error.message))
       
     
     },1000)
@@ -284,9 +286,8 @@ function getForecast(city){
                 div.style.padding =  "10px";
                 div.style.textAlign = "center";
                 div.style.fontWeight = "bold";
-                let img = document.createElement("img");
-                img.src = "/images/not_found_2.png"
-                div.append(img)
+                div.style.backgroundImage = "url('/images/not_found_2.png')";
+                div.classList.add("notFoundImg");
                 setTimeout(()=>{
                     location.reload()
                  },3000)

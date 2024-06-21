@@ -20,6 +20,8 @@ function displayTime(){
             document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
     
         })
+        .catch((err) => document.getElementById("displayDate").innerHTML = "")
+      
    
     
     },1000)
