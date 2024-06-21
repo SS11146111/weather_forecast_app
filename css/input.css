@@ -196,6 +196,13 @@
         padding-top: 5px;
     }
 
+    #div3{
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    
+    }
+
 }
 
 

@@ -1232,6 +1232,12 @@ video {
     flex-shrink: 0;
     padding-top: 5px;
   }
+
+  #div3{
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 .hover\:bg-blue-200:hover {
@@ -1549,12 +1555,12 @@ video {
     width: 20px;
   }
 
-  .lg\:w-\[220px\] {
-    width: 220px;
-  }
-
   .lg\:w-\[230px\] {
     width: 230px;
+  }
+
+  .lg\:w-\[240px\] {
+    width: 240px;
   }
 
   .lg\:w-\[265px\] {
@@ -1741,6 +1747,10 @@ video {
     width: 700px;
   }
 
+  .xl\:w-\[280px\] {
+    width: 280px;
+  }
+
   .xl\:justify-between {
     justify-content: space-between;
   }
@@ -1764,68 +1774,28 @@ video {
     left: 450px;
   }
 
-  .\32xl\:left-\[54px\] {
-    left: 54px;
-  }
-
-  .\32xl\:top-\[150px\] {
-    top: 150px;
-  }
-
-  .\32xl\:top-\[184px\] {
-    top: 184px;
-  }
-
-  .\32xl\:top-\[148px\] {
-    top: 148px;
-  }
-
   .\32xl\:left-\[58px\] {
     left: 58px;
-  }
-
-  .\32xl\:top-\[182px\] {
-    top: 182px;
-  }
-
-  .\32xl\:top-\[180px\] {
-    top: 180px;
-  }
-
-  .\32xl\:left-\[190px\] {
-    left: 190px;
-  }
-
-  .\32xl\:left-\[40px\] {
-    left: 40px;
-  }
-
-  .\32xl\:left-\[50px\] {
-    left: 50px;
-  }
-
-  .\32xl\:left-\[60px\] {
-    left: 60px;
-  }
-
-  .\32xl\:left-\[68px\] {
-    left: 68px;
-  }
-
-  .\32xl\:left-\[66px\] {
-    left: 66px;
   }
 
   .\32xl\:left-\[64px\] {
     left: 64px;
   }
 
+  .\32xl\:top-\[148px\] {
+    top: 148px;
+  }
+
+  .\32xl\:top-\[180px\] {
+    top: 180px;
+  }
+
   .\32xl\:mb-2 {
     margin-bottom: 0.5rem;
   }
 
-  .\32xl\:ml-\[355px\] {
-    margin-left: 355px;
+  .\32xl\:ml-\[375px\] {
+    margin-left: 375px;
   }
 
   .\32xl\:ml-\[40px\] {
@@ -1852,10 +1822,6 @@ video {
     margin-top: 4px;
   }
 
-  .\32xl\:ml-\[375px\] {
-    margin-left: 375px;
-  }
-
   .\32xl\:h-\[420px\] {
     height: 420px;
   }
@@ -1880,12 +1846,12 @@ video {
     width: 320px;
   }
 
-  .\32xl\:w-\[400px\] {
-    width: 400px;
-  }
-
   .\32xl\:w-\[40px\] {
     width: 40px;
+  }
+
+  .\32xl\:w-\[420px\] {
+    width: 420px;
   }
 
   .\32xl\:w-\[500px\] {
@@ -1910,10 +1876,6 @@ video {
 
   .\32xl\:w-\[950px\] {
     width: 950px;
-  }
-
-  .\32xl\:w-\[420px\] {
-    width: 420px;
   }
 
   .\32xl\:p-1 {
