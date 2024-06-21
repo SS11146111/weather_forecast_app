@@ -1,3 +1,6 @@
+let errorMsg;
+
+
 //display current date and time
 function displayTime(){
 
@@ -20,14 +23,14 @@ function displayTime(){
             document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
     
         })
-        .catch((err) => document.getElementById("displayDate").innerHTML = "")
+        .catch((error) => errorMsg = error.message)
       
-   
-    
     },1000)
 
 }
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+//function to display additional weather information
 
 function displayData(){
     const storedValues = [];
@@ -275,4 +278,6 @@ function displayData(){
     }
 
 displayData()
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
 
