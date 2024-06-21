@@ -50,9 +50,9 @@
             <input type="text" id="cityName" name="cityName" class="m-2 rounded-md p-1 w-72 md:w-[360px] lg:w-[150px] xl:w-[200px] 2xl:w-[190px]" placeholder="e.g., Shillong">
             <button id="enter"><img src='/images/arrow.png' width=20 height=20 alt='enter'/></button>
             <i class="fa fa-caret-down absolute left-[290px] md:absolute md:ml-[252px] top-[168px] z-[79] bg-blue-600 rounded-md text-center p-2 text-white hover:bg-blue-200 hover:text-blue-600 lg:absolute lg:top-[152px] lg:left-[54px] xl:left-[125px] xl:top-[152px] 2xl:top-[148px] md:top-[156px]" aria-hidden="true" id="caret"></i>
-            <div id="dropDownContent" class="hidden rounded-md absolute bg-red-100 w-[288px] md:w-[356px] md:top-[188px] md:ml-[184px] z-[90] top-[200px] left-[26px] lg:absolute lg:w-[148px] lg:ml-[154px] lg:top-[184px] xl:w-[196px] xl:top-[184px] xl:left-[50px] 2xl:top-[180px] 2xl:left-[58px] 2xl:w-[190px] ">
-                <div class="flex"><button id="clr" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white 2xl:text-xs">cls</button><button id="close" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[1px] ml-[244px] md:ml-[312px] lg:ml-[104px] xl:ml-[110px] xl:absolute xl:left-[70px] 2xl:left-[64px]">X</button></div>
-                <hr>
+            <div id="dropDownContent" class="overflow-y-auto h-[120px] hidden rounded-md absolute bg-white w-[288px] md:w-[356px] md:top-[189px] md:ml-[184px] z-[90] top-[201px] left-[26px] lg:absolute lg:w-[148px] lg:ml-[156px] lg:top-[185px] xl:w-[196px] xl:top-[185px] xl:left-[48px] 2xl:top-[181px] 2xl:left-[54px] 2xl:w-[190px] ">
+                <div class="flex"><button id="clr" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white 2xl:text-xs">cls</button><button id="close" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[1px] ml-[244px] md:ml-[312px] lg:ml-[104px] xl:ml-[110px] xl:absolute xl:left-[70px] 2xl:left-[48px]">X</button></div>
+                <hr class="border-gray-300 border-2 border-solid">
                 <div id="history" class="flex flex-col items-start"></div>
             </div>
         </div>
@@ -110,9 +110,9 @@
         <button class="bg-blue-800 rounded-md text-center p-2 hover:bg-slate-300 hover:text-black shadow-lg shadow-gray-800/50 font-bold text-white hidden ml-[262px] md:ml-[490px] lg:text-[8px] lg:p-[2px] lg:ml-[535px] xl:mt-2 xl:mb-2 xl:ml-[635px] 2xl:ml-[850px] 2xl:p-2 2xl:text-[13px]" id="more_data2" >more data</button>
         <div class="flex bg-white rounded-md m-2 ml-4 mr-4 overflow-x-auto w-[336px] md:w-[566px] lg:h-[350px] lg:w-[560px] lg:ml-[20px] xl:h-[420px] xl:w-[662px] 2xl:w-[910px] 2xl:h-[420px]" id="forecastReport" ></div>
         <i class="fa fa-caret-down absolute left-[291px] top-[84px] bg-blue-600 rounded-md text-center p-2 text-white hover:bg-blue-200 hover:text-blue-600 md:absolute md:ml-[175px] lg:absolute lg:left-[81px] lg:mt-[0px] md:top-[60px] xl:left-[112px] 2xl:left-[312px]" aria-hidden="true" id="caret2"></i>
-        <div id="dropDownContent2" class="hidden rounded-md absolute bg-red-100 w-[286px] z-[90] top-[116px] left-[30px] md:w-[356px] md:ml-[103px] md:top-[92px] lg:w-[190px] lg:ml-[60px] lg:top-[92px] xl:w-[220px] xl:top-[92px] 2xl:left-[34px] 2xl:w-[420px]">
-            <div class="flex"><button id="clr2" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white">cls</button><button id="close2" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[2px] ml-[242px] md:ml-[312px] lg:ml-[145px] xl:ml-[176px] 2xl:ml-[375px]">X</button></div>
-            <hr>
+        <div id="dropDownContent2" class="overflow-y-auto h-[120px] hidden rounded-md absolute bg-white w-[286px] z-[90] top-[117px] left-[30px] md:w-[356px] md:ml-[103px] md:top-[93px] lg:w-[190px] lg:ml-[60px] lg:top-[93px] xl:w-[220px] xl:top-[94px] 2xl:left-[34px] 2xl:w-[419px]">
+            <div class="flex"><button id="clr2" class="bg-[rgb(6,104,6)] border-[rgb(6,104,6)] border-2 border-solid rounded-md p-[2px] text-sm font-bold m-[2px] text-white">cls</button><button id="close2" class="bg-red-600 border-2 border-solid border-red-700 rounded-md p-[2px] text-xs font-bold m-[2px] ml-[242px] md:ml-[312px] lg:ml-[145px] xl:ml-[176px] 2xl:ml-[358px]">X</button></div>
+            <hr class="border-gray-300 border-2 border-solid">
             <div id="history2" class="flex flex-col items-start"></div>
         </div>
     </div> 
