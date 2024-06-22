@@ -142,7 +142,7 @@ function getCurrentWeatherReport(city)
         document.getElementById("weatherDesc").innerHTML = desc;
         document.getElementById("more_data1").addEventListener("click", 
         function(){
-            location.href = `/html/moreData.html?city=`+city+`&type=current`;
+            location.href = `/moreData.html?city=`+city+`&type=current`;
             //location.href = `/html/moreData.html?city=Guwahati&type=current`; for testing
 
         })
@@ -353,7 +353,7 @@ function getForecast(city){
                 document.getElementById("more_data2").style.display = "block";
                 document.getElementById("more_data2").addEventListener("click",
                     function(){
-                        location.href=`/html/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;
+                        location.href=`/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;
                         //location.href=`/html/moreData.html?city=Guwahati&days=`+days+`&type=forecast`; for testing
                     }
                 )
