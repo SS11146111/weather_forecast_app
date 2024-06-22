@@ -172,6 +172,7 @@ function getCurrentWeatherReport(city)
 //get current weather report from current position 
 function getCurrentByLocation() 
 {
+   
     //getting current position
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showCity1);
@@ -184,6 +185,7 @@ function showCity1(position)
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
+   
     //let latitude = 25.57; //for testing
     //let longitude = 91.89; //for testing
     
@@ -422,6 +424,7 @@ document.getElementById("gfl").addEventListener("click",
 
 function getForecastByLocation() 
 {
+    
   //getting current position
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showCity2);
@@ -434,9 +437,9 @@ function showCity2(position)
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-
+   
     //let latitude = 25.57; //for testing
-    //let longitude = 91.89;
+    //let longitude = 91.89; //for testing
 
     //fetching city name for current position
     Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
