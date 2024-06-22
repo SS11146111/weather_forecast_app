@@ -71,6 +71,7 @@ o	Entering valid city name e.g., Mumbai and any no. of days gives the required e
 
 The ‘more data’ feature provides additional information.
 ![image](https://github.com/SS11146111/weather_forecast_app/assets/71815480/40c05ef9-d330-4234-9ce0-a1dea8e3188b)
+
 For more than 1 no. of days, scroll through the sections.
 
 o	The dropdown menu shows the recently searched cities. Clicking on any city in the dropdown menu populates the input field with that value. The ‘cls’ button clears the entire search history and the ‘x’ button closes the search history.(If a search is made and the dropdown menu is already in open state then please click on the caret icon for the name to reflect in the menu)
