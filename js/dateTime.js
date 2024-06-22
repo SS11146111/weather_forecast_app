@@ -143,7 +143,7 @@ function getCurrentWeatherReport(city)
         document.getElementById("more_data1").addEventListener("click", 
         function(){
             location.href = `/moreData.html?city=`+city+`&type=current`;
-            //location.href = `/html/moreData.html?city=Guwahati&type=current`; for testing
+            //location.href = `/moreData.html?city=Guwahati&type=current`; for testing
 
         })
     })
@@ -184,8 +184,8 @@ function showCity1(position)
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    //let latitude = 333333; for testing
-    //let longitude = 333333; for testing
+    //let latitude = 25.57; //for testing
+    //let longitude = 91.89; //for testing
     
     //getting city name of current position
     Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
@@ -354,7 +354,7 @@ function getForecast(city){
                 document.getElementById("more_data2").addEventListener("click",
                     function(){
                         location.href=`/moreData.html?city=`+city+`&days=`+days+`&type=forecast`;
-                        //location.href=`/html/moreData.html?city=Guwahati&days=`+days+`&type=forecast`; for testing
+                        //location.href=`/moreData.html?city=Guwahati&days=`+days+`&type=forecast`; for testing
                     }
                 )
             }
@@ -434,6 +434,9 @@ function showCity2(position)
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
+
+    //let latitude = 25.57; //for testing
+    //let longitude = 91.89;
 
     //fetching city name for current position
     Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {

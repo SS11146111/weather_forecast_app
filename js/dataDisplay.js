@@ -13,12 +13,12 @@ function displayTime(){
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             let timestamp = Date.parse(json.datetime);
             let date = new Date(timestamp);
-            let year = date.getFullYear(); // prints the year (e.g. 2021)
-            let month = months[date.getMonth()]; // prints the month (0-11, where 0 = January)
-            let day = date.getDate(); // prints the day of the month (1-31)
-            let hour = date.getHours(); // prints the hour (0-23)
-            let min = date.getMinutes(); // prints the minute (0-59)
-            let sec = date.getSeconds(); // prints the second (0-59)
+            let year = date.getFullYear(); 
+            let month = months[date.getMonth()]; 
+            let day = date.getDate(); 
+            let hour = date.getHours(); 
+            let min = date.getMinutes(); 
+            let sec = date.getSeconds(); 
     
             document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
     

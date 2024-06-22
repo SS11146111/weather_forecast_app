@@ -30,18 +30,25 @@
 
     <!--additional weather data-->
     <div class="flex flex-col md: m-4 bg-white rounded-lg shadow-2xl shadow-blue-900 lg:flex lg:flex-row xl:flex xl:justify-between lg:mt-8 ">
+        <!--to display additional forecasy info-->
         <div class = " w-80 h-[440px] md:w-[700px] md:m-[20px] 2xl:w-[320px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-cover bg-center lg:w-[240px] xl:w-[280px]" id="div1" style="background-image: url(/images/weather.gif) ">
             <h3 class="text-center p-2 bg-blue-400 font-bold">Forecast</h3>
             <table class=" bg-blue-200" id="table1"></table>
         </div>
+
+        <!--to display additional location info-->
         <div class = "w-80 h-[440px] md:w-[700px] 2xl:w-[320px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] lg:w-[240px] xl:w-[280px]" id="div4" style="background-image: url(/images/location.gif)">
             <h3 class="text-center p-2 bg-blue-400 font-bold">Location</h3>
             <table class=" bg-blue-200" id="table4"></table>
         </div>
+
+        <!--to display additional air quality info-->
         <div class = "w-80 h-[440px] md:w-[700px] 2xl:w-[320px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-cover bg-center  lg:w-[240px] xl:w-[280px]" id="div2" style="background-image: url(/images/air_quality.gif)">
             <h3 class="text-center p-2 bg-blue-400 font-bold">Air Quality</h3>
             <table class=" bg-blue-200" id="table2"></table>
         </div>
+
+        <!--to display weather alerts if any-->
         <div class = "w-80 h-[440px] md:w-[700px] 2xl:w-[320px] m-4 border-2 border-solid border-[rgb(125, 204, 230)] bg-blue-200  lg:w-[240px] xl:w-[280px]" id="div3" style="background-image: url(/images/no_notification.gif)">
             <h3 class="text-center p-2 bg-blue-400 font-bold">Alerts</h3>
             <table class=" bg-blue-200" id="table3"></table>
