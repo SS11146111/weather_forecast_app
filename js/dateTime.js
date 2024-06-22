@@ -1,18 +1,19 @@
 let errorMsg;
 
-//display current date and time and intro image
+//display intro image
 function introfun(){
-    displayTime();
-    document.getElementById("forecastReport").innerHTML = "<img src='/images/intro.gif' id='introImg'/>";
+    displayTime(); 
+    document.getElementById("forecastReport").innerHTML = "<img src='/images/intro.gif' id='introImg'/>"; 
 }
 
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 
-//display current date and time
+//function to display current date and time
 function displayTime(){
 
     setInterval(()=>{
    
+        //fetching current datetime
         fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
             .then(res => res.json())
             .then(json => {
@@ -20,12 +21,12 @@ function displayTime(){
                 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                 let timestamp = Date.parse(json.datetime);
                 let date = new Date(timestamp);
-                let year = date.getFullYear(); // prints the year (e.g. 2021)
-                let month = months[date.getMonth()]; // prints the month (0-11, where 0 = January)
-                let day = date.getDate(); // prints the day of the month (1-31)
-                let hour = date.getHours(); // prints the hour (0-23)
-                let min = date.getMinutes(); // prints the minute (0-59)
-                let sec = date.getSeconds(); // prints the second (0-59)
+                let year = date.getFullYear(); 
+                let month = months[date.getMonth()];
+                let day = date.getDate(); 
+                let hour = date.getHours(); 
+                let min = date.getMinutes(); 
+                let sec = date.getSeconds(); 
         
                 document.getElementById("displayDate").innerHTML = day + ", " + month + " " + year + "<br>" + hour+":"+min+":"+sec;
             })
@@ -37,8 +38,7 @@ function displayTime(){
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
-
-//get current weather report on search by name
+//getting current weather report on search by name
 document.getElementById("enter").addEventListener("click",
     function()
     {
@@ -53,7 +53,7 @@ document.getElementById("enter").addEventListener("click",
             document.getElementById("container1").style.display = "none";
             document.getElementById("container2").style.display = "none";
             document.getElementById("msg1").style.display = "block";
-            document.getElementById("ok").addEventListener("click",
+            document.getElementById("ok1").addEventListener("click",
                 function(){
                     document.getElementById("msg1").style.display = "none";
                     document.getElementById("container1").style.display = "block";
@@ -66,7 +66,7 @@ document.getElementById("enter").addEventListener("click",
     }
 )
 
-
+//function to get current weather report for a city on search by name
 function getCurrentWeatherReport(city)
 {   
     let flag = false;
@@ -88,11 +88,13 @@ function getCurrentWeatherReport(city)
             localStorage.setItem("cityData", JSON.stringify(storedcityData));
 
         }
+
+    //fetching current weather data
     Promise.race([fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q="+city+"&aqi=no"),
         new Promise((resolve, reject) => {
         setTimeout(() => reject(new Error("Operation timed out")), 10000);
     })])
-    // fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no")//for testing
+    // fetch("http://api.weatherapi.com/v1/current.json?key=b6c462720ea9421a933195817241206&q=Guwahati&aqi=no") (for testing)
     .then(res =>{
 
         if(res.status == 200)
@@ -111,6 +113,7 @@ function getCurrentWeatherReport(city)
         }
     })
     .then(json => {
+        //displaying the current weather report
         document.getElementById("report").style.display = "block";
 
         document.getElementById("myCity").innerHTML = city.toUpperCase();
@@ -142,8 +145,7 @@ function getCurrentWeatherReport(city)
             location.href = `/html/moreData.html?city=`+city+`&type=current`;
             //location.href = `/html/moreData.html?city=Guwahati&type=current`; for testing
 
-        }
-        )
+        })
     })
     .catch((error)=>{
       
@@ -167,12 +169,11 @@ function getCurrentWeatherReport(city)
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-//get weather report from current location 
+//get current weather report from current position 
 function getCurrentByLocation() 
 {
-    
+    //getting current position
     if (navigator.geolocation) {
-        
       navigator.geolocation.getCurrentPosition(showCity1);
     } else { 
       console.log("Geolocation is not supported by this browser.");
@@ -185,6 +186,8 @@ function showCity1(position)
     let longitude = position.coords.longitude;
     //let latitude = 333333; for testing
     //let longitude = 333333; for testing
+    
+    //getting city name of current position
     Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
         setTimeout(() => reject(new Error("Operation timed out")), 10000);
     })])
@@ -204,6 +207,7 @@ function showCity1(position)
             //let j=undefined; for testing
             if(json[0].name != undefined)
                 {
+                    //getting current weather report
                     getCurrentWeatherReport(json[0].name)
                 }
             else{
@@ -257,7 +261,8 @@ function showCity1(position)
                 }
                
             }
-        else {
+        else 
+        {
             
             document.getElementById("container1").style.display = "none";
             document.getElementById("container2").style.display = "none";
@@ -271,6 +276,7 @@ function showCity1(position)
         )}
     })
 
+//function to get extended forecast for a city on search by name
 function getForecast(city){
     let flag = false;
     city = city.toUpperCase();
@@ -304,6 +310,7 @@ function getForecast(city){
             parent.appendChild(div);
         }
 
+    //fetching extended forecast data
     Promise.race([fetch("http://api.weatherapi.com/v1/forecast.json?key=b6c462720ea9421a933195817241206&q="+city+"&days="+days+"&aqi=no&alerts=no"),new Promise((resolve, reject) => {
         setTimeout(() => reject(new Error("Operation timed out")), 10000);
     })])
@@ -326,6 +333,7 @@ function getForecast(city){
         })
         .then(json => 
             {
+                //displaying extended forecast data
                 for(let i = 0; i<days ; i++)
                 {
                     const record = json.forecast.forecastday[i];
@@ -372,7 +380,7 @@ function getForecast(city){
 
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 
-//get extended weather on search by current location
+//get extended forecast on search by current location
 document.getElementById("gfl").addEventListener("click",
     function(){
         const days = document.getElementById("days").value;
@@ -414,7 +422,7 @@ document.getElementById("gfl").addEventListener("click",
 
 function getForecastByLocation() 
 {
-  
+  //getting current position
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showCity2);
     } else { 
@@ -427,8 +435,8 @@ function showCity2(position)
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
 
+    //fetching city name for current position
     Promise.race([fetch("http://api.openweathermap.org/geo/1.0/reverse?lat="+latitude+"&lon="+longitude+"&limit=1&appid=9a67710d25a248e3b44c5a1fa1391638"),new Promise((resolve, reject) => {
-        // Reject after 5 seconds
         setTimeout(() => reject(new Error("Operation timed out")), 2000);
     })])
         .then(res => {
@@ -446,7 +454,7 @@ function showCity2(position)
         .then(json => {
             if(json[0].name != undefined)
                 {
-
+                    //getting extended forecast for city
                     getForecast(json[0].name)
                 }
             else{
