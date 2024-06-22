@@ -11,7 +11,9 @@ o	Search by current position + No. of days
 
 Built with:
 •	HTML: https://developer.mozilla.org/en-US/docs/Web/HTML
+
 •	Javascript: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
 •	Tailwind CSS: https://tailwindcss.com/
 
 Usage:
