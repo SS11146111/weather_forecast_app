@@ -6,7 +6,7 @@ This is a Weather Forecast application that retrieves weather data from an API a
 
 
 
-•	Current weather report
+•	Current/Realtime weather report
 
 		o		Search by city name
 
@@ -32,7 +32,7 @@ Built with:
 
 
 Usage:
-1.	Current weather report:
+1.	Current weather report: provides current or realtime weather information for a given city
 ![image](https://github.com/SS11146111/weather_forecast_app/assets/71815480/6a21c659-b673-47e6-9bfd-1f80b998ab45)
 
 The current weather report section includes an input field for the user to enter the city name to search & a button to select the current position. This provides flexibility to search for weather report by city name or search for weather report for current position.
@@ -55,7 +55,7 @@ The current weather report section includes an input field for the user to enter
 	o	The ‘Use current location’ feature gives the current weather report for the current position.
 ![image](https://github.com/SS11146111/weather_forecast_app/assets/71815480/c9232a53-765c-48b4-bbcb-c5579b87afe7)
 
-2.	Extended forecast by days:
+2.	Extended forecast by days: provides upto next 14 day weather forecast.
 ![image](https://github.com/SS11146111/weather_forecast_app/assets/71815480/95a6d6ce-286b-4957-abda-f75c49b435a0)
 
 The extended forecast section includes an input field for the city name, a button to select current position and an input field to enter the number of days. The user can enter either a combination of city name and number of days for which the extended forecast is to be obtained or select the current location and a number of days to obtain the extended forecast. The valid range for the number of days is from 1 to 14.
