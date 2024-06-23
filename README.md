@@ -58,7 +58,7 @@ The current weather report section includes an input field for the user to enter
 2.	Extended forecast by days: provides upto next 14 day weather forecast.
 ![image](https://github.com/SS11146111/weather_forecast_app/assets/71815480/95a6d6ce-286b-4957-abda-f75c49b435a0)
 
-The extended forecast section includes an input field for the city name, a button to select current position and an input field to enter the number of days. The user can enter either a combination of city name and number of days for which the extended forecast is to be obtained or select the current location and a number of days to obtain the extended forecast. The valid range for the number of days is from 1 to 14.
+The extended forecast section includes an input field for the city name, a button to select current position and an input field to enter the number of days. The user can enter either a combination of city name and number of days for which the extended forecast is to be obtained or select the current location and a number of days to obtain the extended forecast. The valid range for the number of days is from 1 to 14. This section is independent and has the flexibility to search the extended forecast for any city or current position for any no. of days between 1 and 14.
 
 	o	Empty search is not allowed
 ![image](https://github.com/SS11146111/weather_forecast_app/assets/71815480/51334c06-d462-4fa4-9e84-175088649fc3)
@@ -108,6 +108,7 @@ Acknowledgements:
 •	http://worldtimeapi.org/
 
 •	https://openweathermap.org/api
+
 
 
 
