@@ -88,7 +88,7 @@ The extended forecast section includes an input field for the city name, a butto
 
 Setup:
 
-•	Extract the zip file
+•	Clone the repository
 
 •	Open the folder in VS code
 
